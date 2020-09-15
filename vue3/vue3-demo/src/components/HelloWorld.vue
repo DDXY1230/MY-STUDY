@@ -1,6 +1,6 @@
 <template>
   <div>这是vue3，可以不需要跟节点了</div>
-  <div class="hello">
+  <!-- <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,
@@ -68,16 +68,22 @@
         <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a>
       </li>
     </ul>
-  </div>
+  </div> -->
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+import { test } from "./test1";
+export default defineComponent({
   name: "HelloWorld",
   props: {
     msg: String,
   },
-};
+  
+  setup() {
+    test();
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
