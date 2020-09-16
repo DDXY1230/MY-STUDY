@@ -1,0 +1,19 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "> npm install -D webpack webpack-cli ##### 查看当前安装的版本号 > ./node_modules/.bin/webpack -v",
+  "main": "a.js",
+  "dependencies": {
+    "webpack-cli": "^3.3.12",
+    "webpack": "^4.44.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hello": "./node_modules/.bin/webpack -v",
+    "start": "webpack ./src/aa.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
