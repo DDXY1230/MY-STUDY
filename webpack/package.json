@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "hello": "./node_modules/.bin/webpack -v",
-    "start": "webpack ./src/aa.js"
+    "start": "webpack"
   },
   "keywords": [],
   "author": "",
