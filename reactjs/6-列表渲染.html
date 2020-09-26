@@ -23,6 +23,13 @@
 		// 	</ul>,
 		// 	document.querySelector('#root')
 		// )
+		/**
+		 * 在jsx中的注意事项：
+		 * 1.class要用className
+		 * 2.style接受的是一个对象
+		 * 3.所有标签必须是小写，并且是闭合标签
+		 * 4.必须有一个唯一的父级标签（跟标签）
+		 * /
 		function getData () {
 			let arr = ['list的内容1','list的内容2','list的内容3']
 			data1.forEach(item => {
@@ -30,11 +37,22 @@
 			})
 			return arr
 		}
+		let style = {
+			color: "green",
+			width: "100px",
+			background: 'yellow',
+			border: "1px solid black"
+		}
 		ReactDOM.render(
-			(<div>{getData()}</div>),
+			(<div className="box" style={style}>{getData()}</div>),
 			document.querySelector('#root')
 		)
     </script>
 </body>
 
 </html>
+<style>
+	.box {
+		border-radius: 20px;
+	}
+</style>
