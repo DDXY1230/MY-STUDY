@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        /*
+        React.createElement(type,props,children)
+        创建一个react元素
+         */
+        let el = React.createElement(
+            'header', {
+                id: 'header'
+            },
+            React.createElement(
+                'h1',
+                null,
+                'hello，h1'),
+            React.createElement(
+                'p',
+                null,
+                '我是p标签'
+            ),
+            React.createElement(
+                'p',
+                null,
+                '我是p标签222'
+            ))
+        ReactDOM.render(
+            React.createElement('h1', null, el),
+            document.querySelector("#root"),
+            () => {
+                console.log('已经渲染完毕')
+            }
+        )
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="js/react.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/babel.js"></script>
+</head>
+
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+		let str = "天气不错哦"
+		let str0 = 134
+		let str1 = "你觉得怎么样？"
+		let str2 = false // 不输出
+		let str3 = null// 不输出
+		let str4 = undefined// 不输出
+		let arr1 = ['内容1','内容2', '内容3'] //以连结的形式连结起来输出
+		let data1 = {// 不能直接输出对象
+			name: 'kkk'// 可以输出对象里面的值
+		}
+        ReactDOM.render(
+          <div>{str}\{str0}\{str1}\{str2}\{str3}\{str4}\{arr1}\{data1.name}</div>,
+            document.querySelector("#root")
+        )
+    </script>
+</body>
+
+</html>

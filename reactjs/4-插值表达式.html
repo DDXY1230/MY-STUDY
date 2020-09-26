@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/babel.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    let str = "天气不错哦"
+    let str1 = "你觉得怎么样？"
+        ReactDOM.render(
+            (<section>
+            <header>
+                <h1>{str}</h1>
+                <p>{str1}</p>  
+            </header>
+            </section>),
+            document.querySelector("#root")
+        )
+    </script>
+</body>
+
+</html>
