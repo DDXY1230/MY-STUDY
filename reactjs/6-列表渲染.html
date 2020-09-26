@@ -27,9 +27,11 @@
 		 * 在jsx中的注意事项：
 		 * 1.class要用className
 		 * 2.style接受的是一个对象
-		 * 3.所有标签必须是小写，并且是闭合标签
+		 * 3.所有标签必须是小写，并且是闭合标签，不管是单标签还是双标签
 		 * 4.必须有一个唯一的父级标签（跟标签）
-		 * /
+		 * 5.有时候要一个跟标签，但是并不希望在页面中渲染出来，
+		 * 那么就要用React.Fragment
+		 */
 		function getData () {
 			let arr = ['list的内容1','list的内容2','list的内容3']
 			data1.forEach(item => {
@@ -44,7 +46,11 @@
 			border: "1px solid black"
 		}
 		ReactDOM.render(
-			(<div className="box" style={style}>{getData()}</div>),
+			(<React.Fragment>
+				<div className="box" style={style}>
+					{getData()}</div>
+				<p>使用了文档碎片</p>
+			</React.Fragment>),
 			document.querySelector('#root')
 		)
     </script>
