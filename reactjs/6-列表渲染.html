@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="js/react.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/babel.js"></script>
+</head>
+
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+		/*各种值在jsx的输出情况*/
+		let data1 = ['内容1','内容2','内容3','内容4','内容5']
+		// ReactDOM.render(
+		// 	<ul id='list'>
+		// 		{data1.map(item => {
+		// 			return <li>{item}</li>
+		// 		})}
+		// 	</ul>,
+		// 	document.querySelector('#root')
+		// )
+		function getData () {
+			let arr = ['list的内容1','list的内容2','list的内容3']
+			data1.forEach(item => {
+				arr.push(<li>{item}</li>)
+			})
+			return arr
+		}
+		ReactDOM.render(
+			(<div>{getData()}</div>),
+			document.querySelector('#root')
+		)
+    </script>
+</body>
+
+</html>
