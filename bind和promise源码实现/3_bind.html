@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        目标函数： 调用bind方法的函数，func.bind func就称之为目标函数
+        新函数： bind返回的函数，let newFunc = func.bind() newFunc就称之为新函数
+        */
+        /*
+        1.返回的函数作为构造函数， 新函数要继承目标函数的原型
+        2.一旦新函数当成构造函数了，目标函数的this应该指向实例对象
+        */
+        function func(...arg) {
+            console.log(this)
+            console.log(arg)
+        }
+        func.prototype.miaov = function () {
+            console.log('miaov123')
+            return '哈哈'
+        }
+        let newFunc = func.bind({
+            a: 11
+        }, 1, 2, 3, 4)
+        // newFunc(5,6,7,8)
+        let f1 = new newFunc(5, 6, 7, 8) // newFunc被当成了构造函数，那么this指向实例
+        console.log(f1.miaov())
+        console.log('-------------------------------')
+        Function.prototype.customeBind = function (thisArg, ...list) {
+            let self = this
+            let Bound = function (...arg2) {
+                let thisArgSelf = this instanceof Bound ? this : thisArg
+                self.apply(thisArgSelf, [...list, ...arg2])
+            }
+            Bound.prototype = Object.create(self.prototype)
+            Bound.prototype.constructor = self
+            return Bound
+        }
+        let newFunc2 = func.customeBind({
+            a: 22
+        }, 1, 2, 3, 4)
+        let f2 = new newFunc2(5, 6, 7, 8)
+        console.log(f2.miaov())
+    </script>
+</body>
+
+</html>
