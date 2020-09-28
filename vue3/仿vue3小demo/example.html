@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <button id="btn">点我</button>
+    <script src="./exa_vue3.js"></script>
+    <script>
+        const root = document.querySelector('#app')
+        const btn = document.querySelector('#btn')
+        const obj = reactive({
+            name: '江疏影',
+            age: 34
+        })
+        let double = computed(() => obj.age * 2)
+        effect(() => {
+            root.innerHTML = `
+            <h1>${obj.name}很漂亮，
+                她今年${obj.age}, 年龄乘以2${double}</h1>`
+        })
+        btn.addEventListener('click', () => {
+            obj.age += 1
+        }, false)
+
+
+        //---------------------
+        // 学习new map
+        // let map = new Map();
+        // let o = {
+        //     n: 1
+        // };
+        // map.set(o, "A"); //add
+        // map.set("2", 9);
+        // console.log(map.has("2")); //check if key exists
+        // console.log(map.get(o)); //retrieve value associated with key
+        // console.log(...map);
+        // console.log(map);
+        // map.delete("2"); //delete key and associated value
+        // map.clear(); //delete everything
+        // //create a map from iterable object
+        // let map_1 = new Map([
+        //     [1, 2],
+        //     [4, 5]
+        // ]);
+        // console.log(map_1.size); //number of keys
+
+        const map = new Map([
+            ['foo', 1],
+            ['foo', 2]
+        ]);
+        console.log(map);
+        console.log(map.get('foo'));
+    </script>
+</body>
+
+</html>
