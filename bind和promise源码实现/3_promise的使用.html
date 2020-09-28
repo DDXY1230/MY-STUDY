@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        new Promise 返回的对象称之为Promise对象
+        三种状态： pending 正在进行
+                fullfilled 已完成
+                rejected 已失败
+        1.new Promise 接收一个函数executor
+        2.函数 executor接收到连个参数，resolve， reject
+        调用resolve把Promise转为成功状态
+        调用reject把Promise转为失败状态
+        
+        */
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('成功111')//resolve函数只会执行一次
+                // resolve('成功222')//resolve函数只会执行一次
+                // resolve('成功333')//resolve函数只会执行一次
+                // reject('失败')
+            }, 1000)
+        })
+        p.then(function (data) {
+            console.log('第一个then参数成功了', data)
+        }, function (data) {
+            console.log('第一个then参数失败了', data)
+        })
+        p.then(function (data) {
+            console.log('第二个then参数成功了', data)
+        }, function (data) {
+            console.log('第二个then参数失败了', data)
+        })
+        console.log(p)
+    </script>
+</body>
+
+</html>

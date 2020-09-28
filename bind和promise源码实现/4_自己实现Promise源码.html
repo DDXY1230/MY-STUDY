@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./customePromise.js"></script>
+</head>
+
+<body>
+    <script>
+        let p2 = new CustomePromise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('p2, 成功')
+            }, 3000)
+        })
+        p2.then((data) => {
+            console.log('p2then', data)
+        })
+        console.log('华丽的分割线-----------------------------------')
+        let p = new CustomePromise((resolve, reject) => {
+            // setTimeout(() => {
+                resolve('wwww')
+            // }, 1000)
+        })
+        // p.then((data) => {
+        //     console.log('第一个then成功', data)
+        // }, (err) => {
+        //     console.log('第一个then失败', err)
+        // })
+
+        // p.then((data) => {
+        //     console.log('第二个then成功', data)
+        // }, err => {
+        //     console.log('第二个then失败', err)
+        // })
+        // console.log(' 我先执行')
+        // document.onclick = function () {
+        //     console.log(p)
+        //     p.then(data => {
+        //         console.log(data)
+        //     })
+        // }
+    </script>
+</body>
+
+</html>
