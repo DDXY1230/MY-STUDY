@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            border: 2px solid blue;
+            height: 500px;
+            margin: 20px;
+            overflow: auto;
+        }
+
+        .file {
+            position: relative;
+            float: left;
+            padding: 20px;
+            margin: 10px;
+            width: 80px;
+            border: 1px solid transparent;
+            background: #f1f1f1;
+        }
+
+        .fileActive {
+            border-color: #000;
+            background: #fff;
+        }
+
+        .file span {
+            display: block;
+            font-size: 14px;
+            font-family: '宋体';
+            text-align: center;
+        }
+
+        .file i {
+            display: none;
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            border: 1px solid #000;
+            width: 16px;
+            height: 17px;
+        }
+
+        .checked {
+            background: url('img/checked.png');
+        }
+
+        .fileActive i {
+            display: block;
+        }
+
+        .selection {
+            position: fixed;
+            border: 1px solid #0767dd;
+            background: rgba(122, 179, 250, .2);
+        }
+
+        .rename {
+            width: 80px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <button id="createBtn">新建文件夹</button>
+    <label for="checkedAll">
+        <input type="checkbox" id='checkedAll'>
+        全选
+    </label>
+    <button id="deleteFiles">删除所选</button>
+    <div id='box'>
+        <!-- <div class="file fileActive">
+            <img src="img/folder-b.png" alt="">
+            <span>新建文件夹</span>
+            <i class="checked"></i>
+        </div> -->
+    </div>
+</body>
+<script type="text/javascript">
+    (function () {
+        console.log(1122)
+        let createBtn = document.querySelector('#createBtn')
+        let box = document.querySelector('#box')
+        let file = document.querySelectorAll('.file')
+        let checkedAll = document.querySelector('#checkedAll')
+        // 创建文件夹, 并且每次创建的时候全选按钮变成非全选
+        createBtn.onclick = function () {
+            let file = document.createElement('div')
+            file.className = 'file'
+            file.innerHTML = `
+            <img src='img/folder-b.png' alt='文件夹'>
+            <span class='name'>新建文件夹</span>
+            <span><input class="rename" type="text"/></span>
+            <i></i>
+            `
+            box.appendChild(file)
+            checkedAll.checked = false
+        }
+        // 阻止冒泡
+        createBtn.onmousedown = function (e) {
+            console.log('在创建文件的按钮下按下了')
+            let ev = e || window.event
+            ev.cancelBubble = true
+        }
+        // 添加事件
+        box.addEventListener('mouseover', function (e) {
+            let file = null
+            // 判断这个元素是否添加了class
+            if (e.target.classList.contains('file')) {
+                file = e.target
+            } else if (e.target.parentNode.classList.contains('file')) {
+                file = e.target.parentNode
+            }
+            if (file) {
+                file.classList.add('fileActive')
+            }
+        })
+        box.addEventListener('click', function (e) {
+            console.log(e.target.tagName)
+            if (e.target.tagName == 'I') {
+                e.target.classList.toggle('checked')
+                setCheckedAll()
+            }
+            // 重命名操作后点击屏幕任意位置确定命名
+            let files = document.querySelectorAll('.file')
+            files.forEach(file => {
+                file.querySelector('.name').style.display = 'block'
+                file.querySelector('input').style.display = 'none'
+            })
+        })
+        // 双击重命名
+        // TODO:
+        box.addEventListener('dblclick', function (e) {
+            console.log('进行重命名')
+            console.dir(e.target.parentNode.querySelector('input'))
+            if (e.target.tagName === 'SPAN') {
+                e.target.style.display = 'none'
+                e.target.parentNode.querySelector('input').style.display = 'block'
+            }
+            return false
+        })
+
+        function setCheckedAll() {
+            let filesChecked = document.querySelectorAll('.file>i')
+            for (let i = 0; i < filesChecked.length; i++) {
+                if (!filesChecked[i].classList.contains('checked')) {
+                    checkedAll.checked = false
+                    return
+                }
+            }
+            checkedAll.checked = true
+        }
+        box.addEventListener('mouseout', function (e) {
+            let file = null
+            if (e.target.classList.contains('file')) {
+                file = e.target
+            } else if (e.target.parentNode.classList.contains('file')) {
+                file = e.target.parentNode
+            }
+            if (file) {
+                let checked = file.querySelector('i')
+                if (!checked.classList.contains('checked')) {
+                    file.classList.remove('fileActive')
+                }
+            }
+        })
+        // 全选和全不选
+        checkedAll.onchange = function () {
+            let files = document.querySelectorAll('.file')
+            if (checkedAll.checked) {
+                files.forEach(function (item) {
+                    let checked = item.querySelector('i')
+                    item.classList.add('fileActive')
+                    checked.classList.add('checked')
+                })
+            } else {
+                files.forEach(item => {
+                    let checked = item.querySelector('i')
+                    item.classList.remove('fileActive')
+                    checked.classList.remove('checked')
+                })
+            }
+        }
+        // 框选
+        document.onmousedown = function (ev) {
+            let e = ev || window.event
+            let selection = document.createElement('div')
+            let files = document.querySelectorAll('.file')
+            let startClient = {
+                x: e.clientX,
+                y: e.clientY
+            }
+            selection.className = 'selection'
+            document.body.appendChild(selection)
+            document.onmousemove = function (e) {
+                let nowClient = {
+                    x: e.clientX,
+                    y: e.clientY
+                }
+                selection.style.width = Math.abs(nowClient.x - startClient.x) + 'px'
+                selection.style.height = Math.abs(nowClient.y - startClient.y) + 'px'
+                selection.style.left = Math.min(nowClient.x, startClient.x) + 'px'
+                selection.style.top = Math.min(nowClient.y, startClient.y) + 'px'
+                files.forEach(item => {
+                    let checked = item.querySelector('i')
+                    if (isCollision(item, selection)) {
+                        item.classList.add('fileActive')
+                        checked.classList.add('checked')
+                    } else {
+                        item.classList.remove('fileActive')
+                        checked.classList.remove('checked')
+                    }
+                })
+            }
+            document.onmouseup = function (e) {
+                document.body.removeChild(selection)
+                document.onmousemove = null
+                document.onmouseup = null
+            }
+            return false
+        }
+        // 碰撞检测
+        function isCollision(el, el2) {
+            let elRect = el.getBoundingClientRect()
+            let elRect2 = el2.getBoundingClientRect()
+            if (elRect.top > elRect2.bottom ||
+                elRect.left > elRect2.right ||
+                elRect.right < elRect2.left ||
+                elRect.bottom < elRect2.top) {
+                // 没有碰撞到
+                return false
+            }
+            // 否则就是碰撞到
+            return true
+        }
+        // 删除所选的文件夹
+        let deleteFilesBtn = document.querySelector('#deleteFiles')
+        deleteFilesBtn.addEventListener('click', function () {
+            console.log('确定要删除吗')
+            let filesChecked = document.querySelectorAll('.fileActive')
+            console.log('所选择的文件', filesChecked)
+            filesChecked.forEach(i => {
+                box.removeChild(i)
+            })
+            checkedAll.checked = false
+        })
+    })()
+</script>
+
+</html>
