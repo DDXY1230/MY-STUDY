@@ -1,0 +1,1 @@
+1.本地存储（localstorage 或者 sessionstorage）存储图片的话，要事先转成base64的方式

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #69c;
+            margin: 10px;
+        }
+
+        .block1 {
+            /* transition: background-color 3s; */
+            /* 以上transition也可以分开写 */
+            transition-property: width;
+            transition-duration: 3s;
+            transition-timing-function: linear;
+        }
+
+        .block2 {
+            transition: width 3s ease;
+        }
+
+        .block3 {
+            transition: width 3s ease-in;
+        }
+
+        .block4 {
+            transition: width 3s ease-in-out;
+        }
+
+        .block5 {
+            transition: width 3s ease-out;
+        }
+
+        .block1:hover,
+        .block2:hover,
+        .block3:hover,
+        .block4:hover,
+        .block5:hover {
+            /* background-color: red; */
+            width: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box block1"></div>
+    <div class="box block2"></div>
+    <div class="box block3"></div>
+    <div class="box block4"></div>
+    <div class="box block5"></div>
+</body>
+
+</html>
