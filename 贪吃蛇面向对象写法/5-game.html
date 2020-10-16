@@ -202,7 +202,7 @@
             move() {
                 this.timer = setInterval(() => {
                     this.snake.move()
-                    // this.map.clearData()
+                    this.map.clearData()
                     if (this.isEat()) {
                         console.log('吃到食物了')
                         this.grade++
@@ -210,7 +210,10 @@
                         this.map.clearData()
                         this.changeGrade(this.grade)
                         this.food.create()
-                        // this.stop()
+                        // 吃了食物加速
+                        this.interval *= .9
+                        this.stop()
+                        this.start()
                     }
                     this.map.setData(this.snake.data)
                     this.map.setData(this.food.data)
