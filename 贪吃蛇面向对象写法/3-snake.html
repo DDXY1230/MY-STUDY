@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        class Map {
+            constructor(el, rect = 10) {
+                this.el = el
+                this.rect = rect
+                this.data = []
+                this.cells = Math.ceil(Map.getStyle(el, 'width') / this.rect)
+                this.rows = Math.ceil(Map.getStyle(el, 'height') / this.rect)
+                //以下两行代码可以在el行内样式上加属性
+                Map.setStyle(el, 'width', this.cells * rect)
+                Map.setStyle(el, 'height', this.rows * rect)
+            }
+            static getStyle(el, attr) {
+                return parseFloat(getComputedStyle(el)[attr])
+            }
+            static setStyle(el, attr, val) {
+                el.style[attr] = val + 'px'
+            }
+            setData(newData) {
+                console.log('===>',newData)
+                this.data = this.data.concat(newData)
+            }
+            clearData() {
+                //清空数组
+                this.data.length = 0
+            }
+            include({
+                x,
+                y
+            }) {
+                console.log(this.data)
+                return this.data.some(item => (item.x == x && item.y == y))
+            }
+            render() {
+                console.log(this.data)
+                this.el.innerHTML = this.data.map(item => {
+                    return `<span style="position: absolute;left:${item.x * this.rect}px;top:${item.y * this.rect}px;width:${this.rect}px;height: ${this.rect}px;background:${item.color};"></span>`
+                }).join('')
+            }
+        }
+        class Food {
+            constructor(map, colors = ['blue', 'yellow', 'pink']) {
+                this.map = map
+                this.colors = colors
+                this.data = null
+                this.create()
+            }
+            // 创建一个随机位置的食物
+            create() {
+                let x = Math.floor(Math.random() * this.map.cells)
+                let y = Math.floor(Math.random() * this.map.rows)
+                let color = this.colors[Math.floor(Math.random() * this.colors.length)]
+                console.log('随机的食物xy位置', x, y, color)
+                this.data = {
+                    x,
+                    y,
+                    color
+                }
+                if (this.map.include(this.data)) {
+                    this.create()
+                }
+                // 创建完食物就在地图上设置位置
+                this.map.setData(this.data)
+            }
+        }
+
+        class Snake {
+            constructor(map,food) {
+                this.map = map
+                this.food = food
+                this.direction = 'right'
+                this.data = [
+                    {x:6,y:2,color:'red'},
+                    {x:5,y:2,color:'white'},
+                    {x:4,y:2,color:'white'},
+                    {x:3,y:2,color:'white'},
+                    {x:2,y:2,color:'white'},
+                ]
+                this.map.setData(this.data)
+                this.map.render()
+            }
+            move() {
+                // 记录数据的最后一组数据
+                let n = this.data.length - 1
+                this.lastData = {
+                    x: this.data[n].x,
+                    y: this.data[n].y,
+                    color: this.data[n].color
+                }
+                console.log('this.lastData', this.lastData)
+                //让后面每一个走到前一个的位置
+                for(let i = this.data.length - 1; i > 0;i--){
+                    this.data[i].x = this.data[i-1].x
+                    this.data[i].y = this.data[i-1].y
+                   
+                }
+                // 根据方向移动
+                switch(this.direction) {
+                    case 'left': 
+                    this.data[0].x--
+                    break
+                    case 'right': 
+                    this.data[0].x++
+                    break
+                    case 'top': 
+                    this.data[0].y--
+                    break
+                    case 'bottom': 
+                    this.data[0].y++
+                    break
+                }
+                this.map.setData(this.data)
+                this.map.render()
+                
+            }
+            changeDir(dir) {
+                //如果是本身在左右移动，
+                //只能修改为上下移动，
+                //如果正在上下移动
+                //只能修改左右移动
+                if(this.direction === 'left' || this.direction === 'right'){
+                    if(dir === 'left' || dir === 'right'){
+                        return false// 此时不能修改方向
+                    }
+                }else {
+                    if(dir === 'top' || dir === 'bottom') {
+                        return false // 此时不能修改方向
+                    }
+                }
+                this.direction = dir
+                return true
+            }
+            // 吃了食物变大
+            eatFood(){
+                this.data.push(this.lastData)
+            }
+            
+        }
+
+        {
+            let map = document.querySelector('#map')
+            let gameMap = new Map(map, 10)
+            let gameFood = new Food(gameMap)
+            let gameSnake = new Snake(gameMap)
+            // 以下开始运动
+            let num = 0
+            let timer = setInterval(() => {
+               gameSnake.move()
+                num++
+                if(num === 60) clearInterval(timer)
+            }, 200)
+            setTimeout(() => {
+                gameSnake.changeDir('bottom')
+                gameSnake.eatFood()
+            },2000)
+            setTimeout(() => {
+                gameSnake.changeDir('right')
+            },4000)
+            setTimeout(() => {
+                gameSnake.changeDir('top')
+                gameSnake.eatFood()
+            },6000)
+            setTimeout(() => {
+                gameSnake.changeDir('left')
+                gameSnake.eatFood()
+            },8000)
+        }
+    </script>
+</body>
+
+</html>
