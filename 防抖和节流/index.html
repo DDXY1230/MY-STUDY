@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="content"
+        style="height:150px;line-height: 150px;text-align: center;color: #fff;background-color: #ccc;font-size: 80px;">
+    </div>
+    <script>
+        let num = 1
+        let content = document.getElementById('content')
+
+        function count() {
+            content.innerHTML = num++
+        }
+        // content.onmousemove = count
+        // 以上代码中当鼠标通过div区域中的时候会持续的触发事件，导致频繁的执行函数，导致页面上的数据变化特别的快
+        // 防抖：所谓防抖，就是指的是触发事件后在n秒内函数只执行一次，如果在n秒内又触发了事件，则会重新计算函数的执行事件
+        // 防抖函数分非立即执行和立即执行版
+
+        // 非立即执行的防抖函数如下：
+        // function debounce(func, wait) {
+        //     let timeout
+        //     return function () {
+        //         let context = this
+        //         let args = arguments
+        //         // console.log('arguments', arguments)
+        //         if (timeout) clearTimeout(timeout)
+        //         timeout = setTimeout(() => {
+        //             func.apply(context, args)
+        //         }, wait)
+        //     }
+        // }
+
+        // 立即执行的防抖函数如下：
+        // function debounce(func, wait) {
+        //     let timeout
+        //     return function() {
+        //         let context = this
+        //         let args = arguments
+        //         // 如果不存在timeout立即执行
+        //         let callNow = !timeout
+        //         if(callNow) func.apply(context,args)
+        //         // 如果存在，先清楚重新开一个，wait时间内不会执行
+        //         if(timeout) clearTimeout(timeout)
+        //         timeout = setTimeout(() => {
+        //             timeout = null
+        //         }, wait)
+
+        //     }
+        // }
+
+        // 以下立即执行和非立即执行合并
+        // function debounce(func, wait, immediate) {
+        //     let timeout
+        //     return function () {
+        //         let context = this
+        //         let args = arguments
+        //         if (timeout) clearTimeout(timeout)
+        //         if (immediate) {
+        //             let callNow = !timeout
+        //             if (callNow) func.apply(context, args)
+        //             timeout = setTimeout(() => {
+        //                 timeout = null
+        //             }, wait)
+        //         } else {
+        //             timeout = setTimeout(() => {
+        //                 func.apply(context, args)
+        //             }, wait)
+        //         }
+        //     }
+        // }
+        // content.onmousemove = debounce(count, 1000, false)
+
+
+        // 节流：所谓节流就是在触发事件的n秒之后只执行一次，节流会稀释函数的执行次数
+        // 节流一般有两种实现方式，一种是时间戳和定时器
+
+        // 以下是事件戳的版本：
+        // function throttle(func, wait) {
+        //     let previous = 0
+        //     return function () {
+        //         let now = Date.now()
+        //         let context = this
+        //         let args = arguments
+        //         if (now - previous > wait) {
+        //             func.apply(context, args)
+        //             previous = now
+        //         }
+        //     }
+        // }
+
+        // 以下是定时器的版本：
+        // function throttle(func, wait) {
+        //     let timeout
+        //     return function () {
+        //         let context = this
+        //         let args = arguments
+        //         if (!timeout) {
+        //             timeout = setTimeout(() => {
+        //                 func.apply(context, args)
+        //                 timeout = null
+        //             }, wait)
+        //         }
+        //     }
+        // }
+
+        // 事件戳和定时器结合的用法：
+        // type 1 时间戳     2  定时器
+        function throttle(func, wait, type) {
+            let previous = 0;
+            let timeout;
+            return function () {
+                let context = this;
+                let args = arguments;
+                if (type === 1) {
+                    console.log('时间戳版')
+                    let now = Date.now();
+                    if (now - previous > wait) {
+                        func.apply(context, args);
+                        previous = now;
+                    }
+                } else if (type === 2) {
+                    console.log('定时器戳版')
+                    if (!timeout) {
+                        timeout = setTimeout(() => {
+                            timeout = null;
+                            func.apply(context, args)
+                        }, wait)
+                    }
+                }
+            }
+        }
+        content.onmousemove = throttle(count, 1000, 1)
+    </script>
+</body>
+
+</html>
