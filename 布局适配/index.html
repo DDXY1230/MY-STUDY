@@ -6,8 +6,8 @@
     <title>Document</title>
     <style>
         /* 媒体查询 在移动端使用频率高
-        移动端：min-device-width max-device-width
-        web端口：min-width; max-width
+        移动端：(min-device-width) (max-device-width)
+        web端口：(min-width); (max-width)
          */
         #div {
             width: 150px;
@@ -33,13 +33,13 @@
             
         } */
     </style>
-    <!-- 可以在style标签上面直接引用格式如下 -->
+    <!-- 可以在style标签上面直接引用格式如下 小括号必须带上 -->
     <style media="(min-width: 1601px) and (max-width: 1700px)">
         #div {
             background-color: blueviolet;
         }
     </style>
-    <!-- 可以用link引入外部样式 -->
+    <!-- 可以用link引入外部样式 小括号必须带上-->
     <link rel="stylesheet" href="css-1.css" media="(min-width:500px) and (max-width: 599px)">
 
 </head>
