@@ -118,7 +118,6 @@
                     },
                 ]
                 this.map.setData(this.data)
-                this.map.render()
             }
             move() {
                 // 记录数据的最后一组数据
@@ -151,8 +150,6 @@
                         break
                 }
                 this.map.setData(this.data)
-                this.map.render()
-
             }
             changeDir(dir) {
                 //如果是本身在左右移动，
@@ -201,7 +198,6 @@
             // 控制移动
             move() {
                 this.timer = setInterval(() => {
-                    this.snake.move()
                     this.map.clearData()
                     if (this.isEat()) {
                         console.log('吃到食物了')
@@ -214,9 +210,20 @@
                         this.interval *= .9
                         this.stop()
                         this.start()
+                        if(this.grade > 10) {
+                            this.stop()
+                        }
                     }
-                    this.map.setData(this.snake.data)
-                    this.map.setData(this.food.data)
+                    if (this.isOver()) {
+                        this.stop()
+                        return
+                    }else {
+
+                        this.snake.move()
+                        this.map.setData(this.snake.data)
+                        this.map.setData(this.food.data)
+                        this.map.render()
+                    }
                 }, this.interval)
             }
             // 判断是否吃到食物
@@ -224,7 +231,22 @@
                 return this.snake.data[0].x === this.food.data.x && this.snake.data[0].y === this.food.data.y
             }
             // 判断是否结束
-            isOver() {}
+            isOver() {
+                if (this.snake.data[0].x < 0 || this.snake.data[0].x > this.map.cells || this.snake.data[0].y < 0 ||
+                    this.snake.data[0] > this.map.rows) {
+                    // alert('游戏结束')
+                    // this.stop()
+                    return true
+                }
+                // 撞到自己游戏也结束
+                for (let i = 1; i < this.snake.data.length; i++) {
+                    if (this.snake.data[0].x === this.snake.data[i].x && this.snake.data[0].y === this.snake.data[i]
+                        .y) {
+                        return true
+                    }
+                }
+                return false
+            }
             // 游戏结束
             over() {
 
@@ -278,6 +300,7 @@
                 gradearea.value = grade
             }
             startGame.onclick = function () {
+                game.stop()
                 game.start()
             }
             game.addControl(function () {

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./KPromise.js"></script>
+</head>
+
+<body>
+
+
+    <script>
+        let p1 = new KPromise((resolve, reject) => {
+            console.log('异步任务开始11')
+            setTimeout(() => {
+                console.log('异步任务开始')
+                resolve(1000)
+                // reject(123)
+            }, 3000)
+        })
+        p1.then(val => {
+            console.log('then1-1', val)
+        },err => {
+            console.log('then-1函数执行失败',err)
+        })
+        p1.then(val => {
+            console.log('then1-2', val)
+        },err => {
+            console.log('then-2函数执行失败',err)
+        })
+    </script>
+</body>
+
+</html>

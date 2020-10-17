@@ -1,0 +1,24 @@
+{
+  "name": "my-study",
+  "version": "1.0.0",
+  "description": "代码仓库是： https://github.com/DDXY1230/MY-STUDY.git",
+  "main": "index.js",
+  "dependencies": {
+    "anywhere": "^1.5.0",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DDXY1230/MY-STUDY.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DDXY1230/MY-STUDY/issues"
+  },
+  "homepage": "https://github.com/DDXY1230/MY-STUDY#readme"
+}
