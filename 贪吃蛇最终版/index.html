@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="grade">0</h1>
+    <div id="map"></div>
+    <button id="start">开始游戏</button>
+    <button id="continuenext">继续游戏</button>
+    <button id="stop">结束游戏</button>
+    <script type="module">
+        import Game from './js/game.js'
+        let map = document.querySelector('#map')
+        let game = new Game(map,10,false)
+        let gradeEl = document.querySelector('#grade')
+        let start = document.querySelector('#start')
+        let continuenext = document.querySelector('#continuenext')
+        let stop = document.querySelector('#stop')
+        game.on('changegrade', (grade) => {
+            console.log(grade)
+            gradeEl.innerHTML = grade
+        })
+        game.on('win', () => {
+            alert('恭喜你赢了')
+        })
+        game.on('over',() => {
+            alert('闯关失败')
+        })
+        game.toControl(function() {
+            window.addEventListener('keydown', (e) => {
+                let keyCode = e.keyCode
+                    // w 87 a 65 s 83 d 68
+                    switch (keyCode) {
+                        case 65:
+                            this.snake.changeDir('left')
+                            break
+                        case 87:
+                            this.snake.changeDir('top')
+                            break
+                        case 68:
+                            this.snake.changeDir('right')
+                            break
+                        case 83:
+                            this.snake.changeDir('bottom')
+                            break
+                    }
+            })
+        })
+        start.onclick = function() {
+            console.log('游戏开始')
+            game.init()
+        }
+        continuenext.onclick = function() {
+            console.log('游戏开始')
+            game.start()
+        }
+        stop.onclick = function() {
+            console.log('游戏结束')
+            game.stop()
+        }
+    </script>
+</body>
+
+</html>
