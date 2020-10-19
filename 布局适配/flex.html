@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1 {
+            /* width: 600px; */
+            width: 300px;
+            height: 700px;
+            background-color: purple;
+            display: flex;
+            /* column column-reverse row(默认) row-reverse */
+            /* flex-direction: row;
+            flex-wrap: wrap; */
+            /* 上面两行代码的简写方式如下
+            flex-flow:<flex-direction> || <flex-wrap>
+            */
+            flex-flow: row wrap;
+            /* end center start space-between space-around */
+            justify-content: space-around;
+            align-items: center;/*处理单行*/
+            /*交叉轴的对齐方式 所谓的交叉轴要看flex-direction的设置，如果设置
+            row 那么交叉轴是Y  如果设置的是colume那么交叉轴是x
+            */
+            /* align-content: center; *//*处理里面的整体*/
+            
+
+        }
+        .div1 div {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>
