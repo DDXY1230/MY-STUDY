@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 写一个mySetInterVal(fn,a,b),每次间隔a,a+b,a+2b,a+3b...,a+nb的时间，
+        //然后写一个myClear，停止上面的mySetInterVal
+        // function mySetInterVal(fn, a, b) {
+        //     this.a = a
+        //     this.b = b
+        //     this.time = 0
+
+        //     this.handle = null
+
+        //     this.start = () => {
+        //         this.handle = setTimeout(() => {
+        //             fn()
+        //             console.log(this.a + (this.time * this.b))
+        //             this.time++
+        //             this.start()
+        //         }, this.a + (this.time * this.b))
+        //     }
+        //     this.stop = () => {
+        //         clearTimeout(this.handle)
+        //         this.time = 0
+        //     }
+        // }
+        class mySetInterVal{
+            constructor(fn,a,b) {
+                this.fn = fn
+                this.a = a
+                this.b = b
+
+                this.time = 0
+
+                this.handle = null
+
+            }
+            start() {
+                this.handle = setTimeout(() => {
+                    this.fn()
+                    console.log(this.a + (this.time * this.b))
+                    this.time++
+                    this.start()
+                },this.a + (this.time * this.b))
+            }
+            stop() {
+                this.time = 0
+                clearTimeout(this.handle)
+            }
+        }
+        let a = new mySetInterVal(() =>{console.log('1122')}, 1000,2000)
+
+        a.start()
+        setTimeout(() => {
+            a.stop()
+        },10000)
+    </script>
+</body>
+
+</html>
