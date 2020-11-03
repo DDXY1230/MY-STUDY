@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const name = 'xtl'
+        // const gender = 'girl'
+        const gender = true
+        function myTag(string, name, gender) {
+            console.log(string, name, gender)
+            let g = gender ? '女': '男'
+            return g
+        }
+        const result = myTag`hey,${name} is a ${gender}`
+        console.log(result)
+    </script>
+</body>
+</html>
