@@ -1,0 +1,16 @@
+body {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #ccc;
+  color: #333;
+}
+body div {
+  background: #fff;
+  color: #333;
+}
+body h3 {
+  color: yellow;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -16,3 +16,43 @@ const person = {
     }
 }
 person.say()
+console.log('----------------------1')
+
+// 手写一个只执行一次的once函数
+function once (fn) {
+    let done = false
+    return function() {
+        if(!done) {
+            done = true
+            return fn.apply(this,arguments)
+        }
+    }
+}
+let pay = once(function(money) {
+    console.log(`支付了${money}RMB`)
+})
+pay(9)
+pay(19)
+pay(9)
+pay(9)
+console.log('------------------------2')
+// 实现一个缓存函数(缓存函数接受纯函数)
+function memorize(f) {
+    let cache = {}
+    return function() {
+        let key = JSON.stringify(arguments)
+        cache[key] = cache[key] || f.apply(f,arguments)
+        return cache[key]
+    }
+}
+// 测试
+function getArea(r) {
+    console.log(r)
+    return Math.PI * r * r
+}
+let getAreaMemery = memorize(getArea)
+console.log(getAreaMemery(2))
+console.log(getAreaMemery(2))
+console.log(getAreaMemery(2))
+console.log(getAreaMemery(2))
+console.log('---------------------3')

@@ -7,3 +7,7 @@
   给页面当中的script标签中设置  type = module 就可以了
 
 6.可以通过browser-sync . --files **/*.js启动一个热更新的机制
+
+7.abstract class Animal{}  抽象类只能被子类继承,不能再直接实例化
+
+8.
