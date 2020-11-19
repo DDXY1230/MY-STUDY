@@ -6,7 +6,8 @@
   "dependencies": {
     "anywhere": "^1.5.0",
     "jquery": "^3.5.1",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "rollup": "^2.33.3"
   },
   "devDependencies": {},
   "scripts": {
