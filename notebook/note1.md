@@ -10,4 +10,9 @@
 
 7.abstract class Animal{}  抽象类只能被子类继承,不能再直接实例化
 
-8.
+8.安装vue调试工具的方式: git clone https://github.com/vuejs/vue-devtools.git
+                      cd vue-tool
+                      npm i
+                      npm run build
+                      进去找到shells-》chrome
+                      然后到Chrome浏览器中打开开发者模式选择加载已解压的扩展程序
