@@ -25,5 +25,5 @@ module.exports = {
     './test/fixtures',
     './dist',
   ],
-};
+}
 
