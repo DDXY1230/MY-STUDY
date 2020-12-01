@@ -6,7 +6,7 @@ describe('test/app/controller/home.test.js', () => {
   it('should assert', () => {
     const pkg = require('../../../package.json')
     assert(app.config.keys.startsWith(pkg.name))
-
+    console.log('12321')
     // const ctx = app.mockContext({});
     // yield ctx.service.xx();
   })
@@ -16,5 +16,5 @@ describe('test/app/controller/home.test.js', () => {
       .get('/')
       .expect('hi, egg')
       .expect(200)
-  })
+  });
 })
