@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "anywhere": "^1.5.0",
+    "express": "^4.17.1",
     "jquery": "^3.5.1",
     "lodash": "^4.17.20",
     "mockjs": "^1.1.0",
