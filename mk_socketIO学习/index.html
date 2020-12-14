@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 平时测试可以这样简单的引入socket.ioss 也可以用cdn的地址-->
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <p>
+    hello server!!
+  </p>
+  <input type="text" id="msg">
+  <button id="btn">发送</button>
+  <script>
+    let socket = io()
+    document.getElementById('btn').addEventListener('click', function() {
+      let value = document.getElementById('msg').value
+      socket.emit('chatEvent', value)
+      document.getElementById('msg').value = ''
+    })
+    // socket.on('message', function(msg) {// 这个地方的message是关键词,不能改
+    //   console.log(msg)
+    // })
+    socket.on('ServerMsg', function(msg) {// 接收服务端广播的值
+      console.log(msg)
+    })
+  </script>
+</body>
+</html>

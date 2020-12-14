@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/vue/2.6.11/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div v-if="isShow">
+      <input type="text" v-model="name">
+      <button id="enter" @click="enter()">进入聊天室</button>
+    </div>
+    <div v-else>
+      <ul>
+        <li v-for="(item,index) in lists" :key="index">{{item}}</li>
+      </ul>
+      <input type="text" id="msg" v-model="message">
+      <button id="sendmsg" @click="send">发送</button>
+      <button id="close">关闭连接</button>
+    </div>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        message: '',
+        lists: [],
+        ws: {},
+        isShow: true,
+        name: ''
+      },
+      mounted() {
+        this.ws = new WebSocket('ws://127.0.0.1:3000')
+        this.ws.onopen = this.onOpen
+        this.ws.onmessage = this.onMessage
+        this.ws.onclose = this.onClose
+        this.ws.onerror = this.onError
+      },
+      methods: {
+        enter() {
+          if (this.name.trim() === '') {
+            alert('用户名不得为空')
+            return
+          }
+          this.ws.send(JSON.stringify({ "event": "enter", "message": this.name }))
+          this.isShow = false
+        },
+        onOpen() {
+          console.log('open:' + this.ws.readyState)
+        },
+        onMessage(event) {
+          console.log(event)
+          let obj = JSON.parse(event.data)
+          if (obj.event === "enter") {
+            console.log(111)
+            this.lists.push(`'欢迎' + ${obj.message} + '加入聊天室'`)
+          } else {
+            this.lists.push(event.data)
+          }
+        },
+        onClose() {
+          console.log('连接关闭')
+        },
+        onerror() {
+          console.log('连接出错')
+        },
+        send() {
+          this.ws.send(JSON.stringify({ "event": "message", "message": this.message }))
+          this.lists.push(this.message)
+          console.log(this.lists)
+          this.message = ''
+        }
+      }
+    })
+    // let ws = new WebSocket('ws://127.0.0.1:3000')
+    // ws.onopen = function() {
+    //   console.log('open:' + ws.readyState)
+    //   // ws.send('hello from client')
+
+    // }
+    // ws.onmessage = function(event) {
+    //   console.log('message:' + ws.readyState)
+    //   console.log(event.data)
+    // }
+    // // 当连接主动断开的时候触发close事件
+    // ws.onclose = function() {
+    //   console.log('close:' + ws.readyState)
+    // }
+    // ws.onerror = function() {
+    //   console.log('error', ws.readyState)
+    //   console.log('连接失败')
+    // },
+    // // 发送消息
+    // document.getElementById('sendmsg').addEventListener('click', function() {
+    //   let inputVal = document.getElementById('msg').value
+    //   ws.send(inputVal)
+    //   inputVal = ''
+    // })
+    // // 关闭连接
+    // document.getElementById('close').addEventListener('click', function() {
+    //   ws.close()
+    // })
+    /*
+    ws有些api在服务端和客户端的写法有些区别:
+    ws.onerror  在服务端要写成  ws.on('error', function() {})
+    ws.onmessage  在服务端要写成  ws.on('message', function() {})
+    */
+  </script>
+</body>
+
+</html>
