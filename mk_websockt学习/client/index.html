@@ -56,6 +56,8 @@
         },
         onOpen() {
           console.log('open:' + this.ws.readyState)
+          // 发起鉴权请求
+          this.ws.send(JSON.stringify({event: 'auth', message: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6ImFpbWVlIiwiaWF0IjoxNTE2MjM5MDIyfQ.L3Ut0odu60E8rvfqZ6bxhpKY16x7W-aGMtkxaZbxED8++'}))
         },
         onMessage(event) {
           // 当用户未进入聊天室则不接收消息
