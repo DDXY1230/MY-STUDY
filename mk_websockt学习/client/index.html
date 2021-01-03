@@ -13,7 +13,7 @@
     <div v-if="isShow">
       <p>昵称:<input type="text" v-model="name"></p>
       <p>房间号:<input type="text" v-model="roomId"></p>
-      
+
       <button id="enter" @click="enter()">进入聊天室</button>
     </div>
     <div v-else>
@@ -36,61 +36,101 @@
         isShow: true,
         name: '',
         num: 0,
-        roomId: 0 // 房间号
+        roomId: 0, // 房间号
+        handleTime: null
       },
       mounted() {
-        this.ws = new WebSocket('ws://127.0.0.1:3000')
-        this.ws.onopen = this.onOpen
-        this.ws.onmessage = this.onMessage
-        this.ws.onclose = this.onClose
-        this.ws.onerror = this.onError
+
       },
       methods: {
+        init() {
+          this.ws = new WebSocket('ws://127.0.0.1:3000')
+          this.ws.onopen = this.onOpen
+          this.ws.onmessage = this.onMessage
+          this.ws.onclose = this.onClose
+          this.ws.onerror = this.onError
+        },
         enter() {
           if (this.name.trim() === '') {
             alert('用户名不得为空')
             return
           }
-          this.ws.send(JSON.stringify({ "event": "enter", "message": this.name,"roomId": this.roomId }))
+          this.init()
           this.isShow = false
         },
         onOpen() {
-          console.log('open:' + this.ws.readyState)
           // 发起鉴权请求
-          this.ws.send(JSON.stringify({event: 'auth', message: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6ImFpbWVlIiwiaWF0IjoxNTE2MjM5MDIyfQ.L3Ut0odu60E8rvfqZ6bxhpKY16x7W-aGMtkxaZbxED8++'}))
+          this.ws.send(JSON.stringify({
+            event: 'auth',
+            message: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6ImFpbWVlIiwiaWF0IjoxNTE2MjM5MDIyfQ.L3Ut0odu60E8rvfqZ6bxhpKY16x7W-aGMtkxaZbxED8'
+          }))
+          this.ws.send(JSON.stringify({
+            "event": "enter",
+            "message": this.name,
+            "roomId": this.roomId
+          }))
+          console.log('open:' + this.ws.readyState)
+          
         },
         onMessage(event) {
           // 当用户未进入聊天室则不接收消息
-          if(this.isShow){
+          if (this.isShow) {
             return
           }
           console.log(event)
           let obj = JSON.parse(event.data)
-          this.num = obj.num
+          // 如果鉴权失败.路由跳转到进入页面
+          if (obj.event === 'noauth') {
+            // 跳转到登陆页,从新获取token
+          }else
           if (obj.event === "enter") {
+          this.num = obj.num
             console.log(111)
             this.lists.push(`'欢迎' + ${obj.message} + '加入聊天室'`)
-          } else if(obj.event === 'out') {
-             console.log(999)
+          }else
+          if (obj.event === "heartbeat") {
+            this.checkServer()
+            this.ws.send(JSON.stringify({
+              event: 'heartbeat',
+              message: 'pong'
+            }))
+          }else
+          if (obj.event === 'out') {
+            console.log(999)
             this.lists.push(obj.userName + ':' + '已经退出了聊天室')
-          }
-          else {
+          } else {
             console.log(333)
             this.lists.push(obj.name + ':' + obj.message)
           }
         },
         onClose() {
           console.log('连接关闭')
+          this.ws.close()
         },
         onerror() {
           console.log('连接出错')
+          // 连接失败之后,1秒进行短线重连
+          setTimeout(() => {
+            this.init()
+          },1000)
         },
         send() {
-            console.log(444)
-          this.ws.send(JSON.stringify({ "event": "message", "message": this.message,"name": this.name }))
+          console.log(444)
+          this.ws.send(JSON.stringify({
+            "event": "message",
+            "message": this.message,
+            "name": this.name
+          }))
           // this.lists.push(this.name + ':' + this.message)
           console.log(this.lists)
           this.message = ''
+        },
+        checkServer() {
+          clearTimeout(this.handleTime)
+          this.handleTime = setTimeout(()=> {
+            this.onClose()
+            this.init()
+          }, 1000 + 500)
         }
       }
     })

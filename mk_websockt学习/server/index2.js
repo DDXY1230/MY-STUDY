@@ -6,9 +6,12 @@ const http = require('http')
 const server = http.createServer()
 const jwt = require('jsonwebtoken')
 
+const timeInterval = 1000
+
 let num = 0
 let group = {}
 wss.on('connection', function connection(ws) {
+  ws.isAlive = true
   console.log('one client is connected')
   // 接收客户端发过来的消息
   ws.on('message', function (msg) {
@@ -43,6 +46,11 @@ wss.on('connection', function connection(ws) {
     }
     if(!ws.isAuth) {
       ws.send(JSON.stringify({event: 'noauth',message: '鉴权未通过,please auth again'}))
+      return
+    }
+    // 心跳检测
+    if(msgObj.event === 'heartbeat' && msgObj.message === 'pong'){
+      ws.isAlive = true
       return
     }
     wss.clients.forEach((client) => {
@@ -91,4 +99,21 @@ server.listen(3000)
 
 
 // 这个文件加入了鉴权,首先  npm install jsonwebtoken
-//
+
+
+
+setInterval(() => {
+  wss.clients.forEach((ws) => {
+    if(!ws.isAlive) {
+      group[ws.roomId] --
+      return ws.terminate()
+    }
+    // 主动发送心跳检测
+    // 当客户端返回消息的时候,主动设置flag在线
+    ws.isAlive = false
+    ws.send(JSON.stringify({
+      event: 'heartbeat',
+      message: 'ping'
+    }))
+  })
+}, timeInterval);
