@@ -25,7 +25,7 @@ Array.prototype.selectionSort = function () {
         indexMin = j
       }
     }
-    if(indexMin != i) {
+    if (indexMin != i) {
       const temp = this[i]
       this[i] = this[indexMin]
       this[indexMin] = temp
@@ -33,4 +33,23 @@ Array.prototype.selectionSort = function () {
   }
 }
 arg1.selectionSort()
+//-------------------------------------------
+// 插入排序  比以上的排序方式要相对好一些
+Array.prototype.insertionSort = function () {
+  for (let i = 1; i < this.length; i++) {
+
+    const temp = this[i]
+    let j = i
+    while (j > 0) {
+      if (this[j - 1] > temp) {
+        this[j] = this[j - 1]
+      } else {
+        break
+      }
+      j--
+    }
+    this[j] = temp
+  }
+}
+arg1.insertionSort()
 console.log(arg1)
