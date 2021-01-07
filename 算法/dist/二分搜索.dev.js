@@ -1,6 +1,6 @@
 "use strict";
 
-//二分法搜索
+//二分法搜索O(logn)
 Array.prototype.binarySearch = function (item) {
   var low = 0;
   var high = this.length - 1;

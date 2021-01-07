@@ -1,4 +1,4 @@
-//二分法搜索
+//二分法搜索O(logn)
 Array.prototype.binarySearch = function(item) {
   let low = 0
   let high = this.length -1
