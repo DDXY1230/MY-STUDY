@@ -1,4 +1,4 @@
-//o(n) * log n
+//log n
 // 归并排序
 Array.prototype.mergeSort = function() {
   const rec =(arr) => {
@@ -25,4 +25,5 @@ Array.prototype.mergeSort = function() {
 }
 let arr = [4,66,3,6,78,4,3,55,99,6,6,3,5,2]
 let arr_ = arr.mergeSort()
+console.log(arr)
 console.log(arr_)
