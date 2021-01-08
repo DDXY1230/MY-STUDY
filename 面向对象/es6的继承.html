@@ -37,6 +37,24 @@
     let b1 = new B(100)
     console.log(b1)
     console.log(B.prototype.__proto__ == A.prototype)
+
+
+    class Utils {
+      query() {}
+    }
+    // 方法一
+    class Dialog extends Utils{
+      constructor() {
+        super()
+        this.query()
+      }
+    }
+    // 方法二
+    class Dialog2 {
+      constructor() {
+        new Utils().query()
+      }
+    }
   </script>
 </body>
 
