@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 给函数做代理
+        function fn() {
+            console.log(this, 111)
+        }
+        // fn.apply(1)
+        // apply一般代理的是一个函数
+        fn = new Proxy(fn, {
+            apply(target, thisArg, ...arg) {
+                console.log(target, thisArg, arg)
+                if (typeof thisArg !== 'object') {
+                    throw '该函数只支持事件和对象调用，请勿直接调用'
+                }
+                target.apply(thisArg, arg)
+            }
+        })
+        // document.onclick = fn
+        // fn.call(1, 'a', 'b', 'c')
+        new fn // 通过new调用不会触发fn的代理
+    </script>
+</body>
+
+</html>

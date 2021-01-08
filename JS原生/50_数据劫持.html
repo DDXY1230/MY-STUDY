@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let data = {
+            name: 'kkb',
+            age: 8
+        }
+        Object.defineProperties(data, {
+            name: {
+                set(newVal) {
+                    console.log(newVal)
+                },
+                get() {
+                    return '怎么好意思问人家名字呢'
+                }
+            },
+            age: {
+                set(newVal) {
+                    console.log(newVal)
+                },
+                get() {
+                    return '年龄保密'
+                }
+            }
+        })
+        // console.log(data)
+
+        //上面设置数据劫持很多个很繁琐，以下是一种更好的方法
+        let obj = {
+            age: 18,
+            name: 'alice',
+            price: 1000
+        }
+        let proxyData = new Proxy(obj, {
+            get(target, key) {
+                console.log(target, key)
+                if (key === 'name') {
+                    console.log(key)
+                }
+                if (key === 'price') {
+                    console.log(key)
+                    console.log(target[key])
+                }
+                return target[key]
+
+            },
+            set(target, key, newVal) {
+                if (key === 'price') {
+                    if (newVal > target[key]) {
+                        // 在此处做数据验证
+                        throw '么钱了'
+                        console.log('你要的钱超过我兜里的钱了')
+                    }
+                }
+                target[key] = newVal
+            },
+            has(target, key) { // 判断某个值存不存在
+                return (key in target)
+            },
+            defineProperty(target, key, description) {
+                // 当Object.defineProperty时调用
+                console.log(target, key, description)
+                // return true // 不返回true，会报错，不允许执行
+                return Object.defineProperty(target, key, description)
+            },
+            deleteProperty(target, key) {
+                // 删除拦截
+                if (key === 'name') {
+                    throw 'name属性不能删除'
+                } else {
+                    delete target[key]
+                }
+            }
+        })
+        // console.log(proxyData.name)
+        // console.log(proxyData.age)
+        // console.log(proxyData.price)
+        // proxyData.price = 3000
+        // console.log('age' in proxyData)
+        // console.log('a' in proxyData)
+        Object.defineProperty(proxyData, 'child', {
+            configurable: true,
+            enumerable: true,
+            get() {
+                return '不要关心人家家事'
+            },
+            set(val) {
+                return '这不是孩子'
+            }
+        })
+        // console.log(proxyData.child)
+        delete proxyData.name
+        /*
+        Proxy.get在对数据进行获取操作的时候进行拦截
+        
+        */
+    </script>
+</body>
+
+</html>

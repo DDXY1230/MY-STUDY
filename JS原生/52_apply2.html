@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 给对象做代理
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    Person = new Proxy(Person, {
+        apply(target, thisArg, ...ar) {
+            if (typeof thisArg !== 'object') {
+                throw 'Person是一个类，请勿直接调用'
+            }
+        },
+        construct(target, arg, Proxy) {
+            console.log(arg)
+            return new target(...arg)
+        }
+    })
+    let p = new Person('aa', 18)
+    console.log(p)
+</script>
