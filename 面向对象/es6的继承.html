@@ -20,7 +20,10 @@
     //也可以这样,但是没必要
     // A.prototype.lx = 100
     // 这种方式不能A()这样执行了,因为基于es6创建的类不能当作普通函数执行了,所以call继承在es6中是跑不通的
-
+    //es6的继承类似与call+寄生组合继承
+    // B.prototype.__proto__ = A.prototype
+    //子类继承父类,可以不写constructor,但是一旦写了,第一句必须是super(),如果不写其实是浏览器默认给你写
+    //constructor(...args) {super(...args)}
     class B extends A{
       constructor(y) {
         super(200)
@@ -33,6 +36,7 @@
     // B.prototype = Object.create(A.prototype)  这样根本没有用
     let b1 = new B(100)
     console.log(b1)
+    console.log(B.prototype.__proto__ == A.prototype)
   </script>
 </body>
 
