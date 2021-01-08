@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    原型继承不是拷贝,是查找性质的
+    特点: 
+    1.不像其他语言的继承(其他语言的继承一般是拷贝继承,也就是子类继承父类,会把父类中的属性和方法拷贝一份到子类中,供子类的实例调用使用)
+    而js它是把弗雷的原型放在子类实例的原型链上,实例想要调用这些方法,是基于__proto__原型链查找机制完成的
+    2.原型继承子类可以重写父类的方法,这样会导致父类其他的实例也收到影响
+    3.父类中私有或者公有的属性方法,最后都会变成子类中公有的属性和方法
+    *封装: 把实现某一个功能的代码进行封装
+    *多态: 重载和重写
+    什么是面向对象:面向对象是一种编程思想,js本身就是基于面向对象构建出来的(例如:js中有很多内置类,像Promise就是es6中新增的一个内置
+    类,我们可以基于new Promise来创建一个实例,来管理异步编程,我们项目中Promise也经常用, 自己也研究过他的源码....),我们之前看过一点框架源码,我们
+    平时用的vue/react/jquery也是基于面向对象构建出来的,他们都是类,平时开发的时候是创建他们的实例来操作,当然我自己在真实项目中,也封装过一些组件插件,也是基于面向对象开发的,这样
+    可以创建不同的实例,来管理私有属性和公有属性,很方便...
+    *继承:子类继承父类中的属性和方法(目的是让子类的实例能够调取父类的方法)
+    继承的方式:
+    方法一:原型继承
+    让父类中的方法和属性在子类实例的原型链上
+
+    *
+    */
+    function A(x) {
+      this.x = x
+    }
+    A.prototype.getX = function () {
+      return this.x
+    }
+
+    function B(y) {
+      this.y = y
+    }
+    B.prototype = new A(200)// 这个顺序不能变,先有原型,再在原型上面添加方法,这就是原型继承
+    B.prototype.constructor = B// 因为上一句重定向了原型,constructor必须手动加回来
+    B.prototype.getY = function () {
+      return this.y
+    }
+    let b1 = new B(100)
+    console.log(b1.y)
+    console.log(b1.getY())
+    console.log(b1.getX())
+    console.log(b1)
+  </script>
+</body>
+
+</html>

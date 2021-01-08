@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 方法二: call继承和寄生组合继承
+    /*
+    call继承的特点: 1.在child中把parent当作普通函数执行,用call改变this的指向,指向child的实例
+    相当于给child的实例设置了很多私有属性或者方法
+    只能继承父类私有的属性和方法,父类私有的变成子类私有的
+    */
+    function A(x) {
+      this.x = x
+    }
+    A.prototype.getX = function () {
+      return this.x
+    }
+
+    function B(y) {
+      A.call(this,200)// 当作普通方法执行,改变this的指向
+      this.y = y
+    }
+    B.prototype.getY = function () {
+      return this.y
+    }
+    let b1 = new B(100)
+    console.log(b1.y)
+    console.log(b1.getY())
+    // console.log(b1.getX())
+    console.log(b1)
+  </script>
+</body>
+
+</html>

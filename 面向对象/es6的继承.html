@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class A {
+      constructor(x) {
+        this.x = x
+      }
+      getX() {
+        return this.x
+      }
+    }
+    //也可以这样,但是没必要
+    // A.prototype.lx = 100
+    // 这种方式不能A()这样执行了,因为基于es6创建的类不能当作普通函数执行了,所以call继承在es6中是跑不通的
+
+    class B extends A{
+      constructor(y) {
+        super(200)
+        this.y = y
+      }
+      getY() {
+        return this.y
+      }
+    }
+    // B.prototype = Object.create(A.prototype)  这样根本没有用
+    let b1 = new B(100)
+    console.log(b1)
+  </script>
+</body>
+
+</html>

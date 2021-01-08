@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //模拟内置Object.create()
+    // Object.create = function(obj) {
+    //   function Fn() {}
+    //   Fn.prototype = obj
+    //   return new Fn()
+    // }
+
+
+    /*
+    寄生组合继承: call继承 + 类似于原型继承
+    特点: 父类私有和公有的分别是子类实例的私有和公有属性方法
+    */
+     function A(x) {
+      this.x = x
+    }
+    A.prototype.getX = function () {
+      return this.x
+    }
+
+    function B(y) {
+      A.call(this, 300)// 此处只能继承私有属性,下面两行代码可以把公有的方法属性继承下来,
+      this.y = y
+    }
+    // Object.create创建一个控对象,让控对象__proto__指向OBJ,只能继承公有属性,结合call就可以实现继承私有属性了
+    B.prototype = Object.create(A.prototype)
+    B.prototype.constructor = B
+    B.prototype.getY = function () {
+      return this.y
+    }
+    let b1 = new B(100)
+    console.log(b1.y)
+    console.log(b1.getY())
+    console.log(b1.getX())
+    console.log(b1)
+  </script>
+</body>
+</html>
