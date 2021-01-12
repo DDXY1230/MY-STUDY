@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      height: 100%;
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+</body>
+  <script>
+    (function () {
+      function myBind(context = window, ...outerArg) {
+        let _this = this
+        return function (...innerArg) {
+          _this.call(context, ...outerArg.concat(innerArg))
+        }
+      }
+      Function.prototype.myBind = myBind
+    })()
+      
+    let obj = {name: 'aaa', hobby:'pingpong'}
+    function fn(...arg) {
+      console.log(1111)
+      console.log(this)
+    }
+    document.body.onclick = fn.myBind(obj, 100,200)
+  </script>
+
+</html>
