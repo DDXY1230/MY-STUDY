@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+
+</head>
+<body>
+  <div if="root">
+
+  <p>姓 <input type="text" v-model="firstName"></p>
+  <p>名 <input type="text" v-model="lastName"></p>
+  <p><input type="text" v-model="fullName"></p>
+  </div>
+  <script>
+    new Vue({
+      el: '#root',
+      data: {
+        firstName: '张',
+        lastName: '三',
+        fullName: '张三'
+      },
+      watch: {
+        firstName(n,o) {
+          this.fullName = n + this.lastName
+        }
+      }
+    })
+  </script>
+</body>
+</html>

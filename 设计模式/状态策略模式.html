@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let likeState = {
+      render(element) {
+        element.innerHTML = '赞'
+      }
+    }
+    let likedState = {
+      render(element) {
+        element.innerHTML = '取消'
+      }
+    }
+    class Button {
+      constructor(container) {
+        this.liked = false
+        this.state = likeState
+        this.element = document.createElement('button')
+        container.appendChild(this.element)
+        this.render()
+      }
+      setState(state) {
+        this.state = state
+        this.render()
+      }
+      render() {
+        this.state.render(this.element)
+      }
+    }
+    
+    let b1 = new Button(document.body)
+    b1.element.addEventListener('click', function () {
+      b1.liked = !b1.liked
+      b1.setState(b1.liked ? likeState : likedState)
+    })
+  </script>
+</body>
+
+</html>
