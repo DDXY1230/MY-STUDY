@@ -7,10 +7,11 @@ const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plug
 module.exports = {
   //因为开发环境和生产环境下的webpack配置有很多不一样的地方,development环境下压缩失效
   mode: 'development',// development,production,node  一共有三个选项,不同模式优化的方案不一样
+  devtool: 'eval',
   optimization: {
     //这里放一些优化的插件
     minimizer: [
-      new TerserWebpackPlugin({
+      new TerserWebpackPlugin({// 如果是生产环境,默认会启用
         parallel: true,// 开启多进程并行压缩
         // cache: true// 开启缓存,如果代码没有发生变化就用缓存
       }),

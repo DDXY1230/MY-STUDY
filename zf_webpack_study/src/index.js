@@ -1,7 +1,7 @@
 import './test1'
 import './test2'
 import './index.css'
-let logo = require('./images/samoye.jpg').default
+let logo = require('./images/samoye.jpg')
 console.log(logo)
 let img = new Image()
 img.src = logo

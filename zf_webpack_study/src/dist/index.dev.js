@@ -6,7 +6,7 @@ require("./test2");
 
 require("./index.css");
 
-var logo = require('./images/samoye.jpg')["default"];
+var logo = require('./images/samoye.jpg');
 
 console.log(logo);
 var img = new Image();
