@@ -1,4 +1,4 @@
 "use strict";
 
-document.write('lxm');
+document.write('lxm00');
 document.write('/------');

@@ -2,17 +2,29 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 module.exports = {
-  //因为开发环境和生产环境下的webpack配置有很多不一样的地方
-  mode: 'development',// production,node  一共有三个选项,不同模式优化的方案不一样
-
+  //因为开发环境和生产环境下的webpack配置有很多不一样的地方,development环境下压缩失效
+  mode: 'development',// development,production,node  一共有三个选项,不同模式优化的方案不一样
+  optimization: {
+    //这里放一些优化的插件
+    minimizer: [
+      new TerserWebpackPlugin({
+        parallel: true,// 开启多进程并行压缩
+        // cache: true// 开启缓存,如果代码没有发生变化就用缓存
+      }),
+      new OptimizeCssAssetsWebpackPlugin()
+    ]
+  },
   // entry如果是字符串的值,那就是单入口
   // entry: './src/index.js', // 入口文件,如果是单入口,chunk的名字就是main
 
   //多入口要用对象的形式
   entry: {
     index: './src/index.js',
-    login: './src/login.js'
+    login: './src/login.js',
+    vendor: ['react', 'react-dom']
   },
    
   output:{
@@ -21,9 +33,11 @@ module.exports = {
     // filename: 'bundle.js'// 这是对应上面单入口的写法
 
     //若是多入口,那么要写成变量的形式
-    filename: '[name].[hash:8].js',// 这里的name是一个变量,来源于entry对象里面的key,hash用来标识,
+    filename: '[name].[hash:8].[chunkhash].js',// 这里的name是一个变量,来源于entry对象里面的key,hash用来标识,
     //当前的hash是32位的,代表本次的编译  :8 代表只要前八位的hash值,为了预防缓存,文件变了,就用新的,文件内容发生变化
     //hash值就会发生变化
+    //chunkhash: 代码块的hash,代码块内容没变那么就可以沿用缓存
+    //contenthash: 代表文件的内容,内容变化才会变,
     // 如果此处用多入口的方式书配置,而entry处只配了单入口,那么此时这个name就是main
     publicPath: '/'// 根路径
   },
@@ -43,8 +57,9 @@ module.exports = {
         test: /\.css$/,//匹配以.css结尾的文件
         // use: ['style-loader', 'css-loader']// 多个loader要用数组,并且顺序是有将就的,从右边到左边
         
-        //以下是对css进行压缩,上面的写法是普通写法,没有进行压缩
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        //以下是对css进行压缩,上面的写法是普通写法,没有进行压缩,以下两种写法均可
+        // use: [MiniCssExtractPlugin.loader, 'css-loader']
+        use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader']
       },
       {
         test: /\.(jpg|png|gig|jpeg|svg)$/,
@@ -54,9 +69,17 @@ module.exports = {
           // url-loader内置了file-loader,所以一般用url-loader就行了
           loader: 'url-loader',
           options: {
-            limit: 10 * 1024// 如果要加载的图片小于10k,那么就转成base64
+            esModule: false,// 默认为true
+            limit: 10 * 1024,// 如果要加载的图片小于10k,那么就转成base64
+            name: '[name].1.[ext]',
+            outputPath: 'images',
+            publicPath: '/images'
           }
         }
+      },
+      {
+        test:/\.(html|htm)$/,
+        loader: 'html-withimg-loader'
       }
     ]
   },
@@ -72,7 +95,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),// 打包前先清楚之前打包的东西
     new MiniCssExtractPlugin({
-      filename: '[name].css',// 代码快chunk的名字
+      filename: 'css/[name].[contenthash].css',// 代码快chunk的名字,加了contenthash,只要内容不变,就用缓存的
       chunkFilename: '[id].css'// 在异步加载是用后面再学
     })
   ]

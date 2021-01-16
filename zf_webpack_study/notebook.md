@@ -38,3 +38,17 @@ npm i clean-webpack-plugin -D // 打包的时候先清除
 
 ## 对css进行分离 mini
 npm install --save-dev mini-css-extract-plugin
+
+## 压缩js 和 css
+用terser-webpack-plugin 替换掉 uglifyjs-webpack-plugin 解决uglifyjs不支持es6的问题
+npm i ugligyjs-webpack-plugin terser-webpack-plugin optimize-css-assets-webpack-plugin -D
+当mode:‘development’的时候,压缩模式不起作用,需要设置production
+
+
+
+## webpack里面的hash
+hash 代表本次的编译,每编译一次产生新的hash,
+chunkhash 代码块的hash,因为每个entry都会产生一个chunk
+
+## 在html中引入图片
+cnpm i html-withimg-loader -D
