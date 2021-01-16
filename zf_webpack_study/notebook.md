@@ -35,3 +35,6 @@ npm i clean-webpack-plugin -D // 打包的时候先清除
 
 ## 文件的打包,图片的打包,图标,字体等
 首先安装: npm i file-loader url-loader -D
+
+## 对css进行分离 mini
+npm install --save-dev mini-css-extract-plugin

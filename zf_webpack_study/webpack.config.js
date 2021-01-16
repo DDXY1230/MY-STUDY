@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   //因为开发环境和生产环境下的webpack配置有很多不一样的地方
   mode: 'development',// production,node  一共有三个选项,不同模式优化的方案不一样
@@ -40,7 +41,10 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,//匹配以.css结尾的文件
-        use: ['style-loader', 'css-loader']// 多个loader要用数组,并且顺序是有将就的,从右边到左边
+        // use: ['style-loader', 'css-loader']// 多个loader要用数组,并且顺序是有将就的,从右边到左边
+        
+        //以下是对css进行压缩,上面的写法是普通写法,没有进行压缩
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.(jpg|png|gig|jpeg|svg)$/,
@@ -62,10 +66,14 @@ module.exports = {
       filename: 'index.html',// 产出后的文件名
       template: './src/index.html',// 指定模版文件
       hash: true,// 为了避免缓存,
-      chunks: ['index'], //默认不写的话,所有产生的chunk都会被插入,引入在先的先加载,后的后加载
+      chunks: ['index','login'], //默认不写的话,所有产生的chunk都会被插入,引入在先的先加载,后的后加载
       chunksSortMode: 'manual',// 对引入的代码块进行排序的模式,不设置可能顺序会错乱  
       //none  auto manual dependency Function等其实是按照entry的顺序不设置的话
     }),
-    new CleanWebpackPlugin()// 打包前先清楚之前打包的东西
+    new CleanWebpackPlugin(),// 打包前先清楚之前打包的东西
+    new MiniCssExtractPlugin({
+      filename: '[name].css',// 代码快chunk的名字
+      chunkFilename: '[id].css'// 在异步加载是用后面再学
+    })
   ]
 }
