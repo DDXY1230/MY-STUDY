@@ -28,5 +28,10 @@ script中的
   
 
 ## html-webpack-plugin
-首先安装: npm i html-webpack-plugin -D   
+首先安装: npm i html-webpack-plugin -D   // 按照模版生成html
 plugin是一个数组
+
+npm i clean-webpack-plugin -D // 打包的时候先清除
+
+## 文件的打包,图片的打包,图标,字体等
+首先安装: npm i file-loader url-loader -D
