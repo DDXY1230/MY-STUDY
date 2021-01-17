@@ -76,3 +76,9 @@ babel对一些公共方法使用了非常小的辅助代码,比如_extend
 默认情况下会被添加到每一个需要的文件,你可以引入@babel/runtime 作为一个独立的模块,来避免重复引入
 npm install --save @babel/runtime
 npm i -D @babel/plugin-transform-runtime
+
+
+## 标准配置 代码格式化
+npm install eslint eslint-loader babel-eslint -D
+
+cnpm i eslint-config-airbnb eslint-loader eslint eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks and eslint-plugin-jsx-ally -D

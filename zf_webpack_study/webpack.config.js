@@ -30,7 +30,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     login: './src/login.js',
-    vendor: ['react', 'react-dom']
+    // vendor: ['react', 'react-dom']
     // vendor: /node_modules/ //把node_modules里面的东西都添加到vendor里面去
     // vendor: glob.sync('./node_modules/**/*.js')
   },
@@ -62,6 +62,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(js)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',// 强制提前执行normal posts
+        include: path.join(__dirname,'src'),// 只检验自己写的src文件里面的代码
+        exclude: /node_modules/  // 不校验node_modules下面的代码
+      },
+      {
         test: /\.js$/,
         // use: 'babel-loader', // 如果有额外的配置文件这个地方只写这一句就可以了,没有的话,就如下写
         use: {
@@ -91,6 +98,15 @@ module.exports = {
         // use: [MiniCssExtractPlugin.loader, 'css-loader']
         use: [{loader: MiniCssExtractPlugin.loader}, 
         'css-loader',
+        // {
+        //   loader: 'css-loader',
+        //   options: {
+        //     importLoaders: 2,
+        //     // 0 => no loaders(default)
+        //     // 1 => postcss-loader
+        //     // 2 => postcss-loader,sass-loader
+        //   }
+        // },
         'postcss-loader'//如果有配置文件postcss.config.js,就直接这样写,没有的话如下
         // {
         //   loader: 'postcss-loader',

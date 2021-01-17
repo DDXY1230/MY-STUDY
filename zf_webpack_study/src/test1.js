@@ -1,2 +1,2 @@
-document.write('lxm00')
-document.write('/------')
+document.write('lxm00');
+document.write('/------');
