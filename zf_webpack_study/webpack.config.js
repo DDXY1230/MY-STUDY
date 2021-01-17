@@ -9,7 +9,10 @@ module.exports = {
   //因为开发环境和生产环境下的webpack配置有很多不一样的地方,development环境下压缩失效
   mode: 'development',// development,production,node  一共有三个选项,不同模式优化的方案不一样
   // devtool: 'eval',
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',// 一般开发环境用source-map,是编译后的代码,因为比较慢但是便于调试,生产环境用eval性能快好,可以缓存
+  //cheap-source-map 没有包含列的信息,体积相对小一些,在开发环境中使用比较实惠,只能定位行不能定位列,这个是会把代码换行,也可能是转化后的代码,不一定是真正的源码
+  //cheap-module-source-map 这个可以定位到真正的源码,但是有cheap就无法定位到行信息(其实影响不大了),
+  //inline-source-map 这个没有生成单独的source-map文件,而是直接其嵌入打包后的文件中
   optimization: {
     //这里放一些优化的插件
     minimizer: [
@@ -125,7 +128,7 @@ module.exports = {
           // url-loader内置了file-loader,所以一般用url-loader就行了
           loader: 'url-loader',
           options: {
-            // esModule: false,// 默认为true
+            esModule: false,// 默认为true
             limit: 10 * 1024,// 如果要加载的图片小于10k,那么就转成base64
             name: '[name].1.[ext]',
             outputPath: 'images',
@@ -136,6 +139,12 @@ module.exports = {
       {
         test:/\.(html|htm)$/,
         loader: 'html-withimg-loader'
+      },
+      {
+        test: /\.(TTF|ttf|eot|)$/,
+        use: {
+          loader: 'url-loader'
+        }
       },
       {
         test: /\.less$/,

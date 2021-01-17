@@ -3,6 +3,7 @@ import './test2'
 import './index.css'
 import './sass.scss'
 import './less.less'
+import './font.css'
 
 const logo = require('./images/samoye.jpg')
 

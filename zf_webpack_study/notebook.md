@@ -82,3 +82,9 @@ npm i -D @babel/plugin-transform-runtime
 npm install eslint eslint-loader babel-eslint -D
 
 cnpm i eslint-config-airbnb eslint-loader eslint eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks and eslint-plugin-jsx-ally -D
+
+## 引入字体
+
+
+## source - map 的原理
+在编译的打包的时候有个sourceURl,就是打包的时候存下来地址,进行关联,当你调试的时候就可以定位了
