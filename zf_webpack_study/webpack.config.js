@@ -1,4 +1,5 @@
 const path = require('path')
+let glob = require('glob')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -7,7 +8,8 @@ const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plug
 module.exports = {
   //因为开发环境和生产环境下的webpack配置有很多不一样的地方,development环境下压缩失效
   mode: 'development',// development,production,node  一共有三个选项,不同模式优化的方案不一样
-  devtool: 'eval',
+  // devtool: 'eval',
+  devtool: 'source-map',
   optimization: {
     //这里放一些优化的插件
     minimizer: [
@@ -15,7 +17,10 @@ module.exports = {
         parallel: true,// 开启多进程并行压缩
         // cache: true// 开启缓存,如果代码没有发生变化就用缓存
       }),
-      new OptimizeCssAssetsWebpackPlugin()
+      new OptimizeCssAssetsWebpackPlugin({
+        assetNameRegExp: /\.css$/g, // 指定要压缩模块的正则
+        cssProcessor: require('cssnano'),//cssnano是postcss的优化和分解插件,cssnano采用的格式很好的css,
+      })
     ]
   },
   // entry如果是字符串的值,那就是单入口
@@ -26,6 +31,8 @@ module.exports = {
     index: './src/index.js',
     login: './src/login.js',
     vendor: ['react', 'react-dom']
+    // vendor: /node_modules/ //把node_modules里面的东西都添加到vendor里面去
+    // vendor: glob.sync('./node_modules/**/*.js')
   },
    
   output:{
@@ -55,12 +62,33 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              "@babel/preset-env",// 转义es6
+              "@babel/preset-react"// 用来转义jsx
+            ],
+            plugins: [// 这里写一个就支持一个,但是大家知道es6的新特性很多,不可能全部写在这里,所以我们可以封装成一个预设,上面是预设,以下要写,是因为上面的预设没有包含这两个功能
+              ["@babel/plugin-proposal-decorators",{legacy: true}],
+              ["@babel/plugin-proposal-class-properties",{loose: true}],
+              ["@babel/plugin-transform-runtime",{
+                corejs:false,
+                helpers: true,
+                // useESModules: false
+              }]
+            ]
+          }
+        }
+      },
+      {
         test: /\.css$/,//匹配以.css结尾的文件
         // use: ['style-loader', 'css-loader']// 多个loader要用数组,并且顺序是有将就的,从右边到左边
         
         //以下是对css进行压缩,上面的写法是普通写法,没有进行压缩,以下两种写法均可
         // use: [MiniCssExtractPlugin.loader, 'css-loader']
-        use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader']
+        use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader','postcss-loader']// 这里光写‘postcss-loader’还不行哦,还要写配置文件postcss.config.js和.browserslistrc配置浏览器支持的版本
       },
       {
         test: /\.(jpg|png|gig|jpeg|svg)$/,
@@ -70,7 +98,7 @@ module.exports = {
           // url-loader内置了file-loader,所以一般用url-loader就行了
           loader: 'url-loader',
           options: {
-            esModule: false,// 默认为true
+            // esModule: false,// 默认为true
             limit: 10 * 1024,// 如果要加载的图片小于10k,那么就转成base64
             name: '[name].1.[ext]',
             outputPath: 'images',
@@ -81,6 +109,14 @@ module.exports = {
       {
         test:/\.(html|htm)$/,
         loader: 'html-withimg-loader'
+      },
+      {
+        test: /\.less$/,
+        use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader','less-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader','sass-loader']
       }
     ]
   },

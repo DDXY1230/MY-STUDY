@@ -6,6 +6,10 @@ require("./test2");
 
 require("./index.css");
 
+require("./sass.scss");
+
+require("./less.less");
+
 var logo = require('./images/samoye.jpg');
 
 console.log(logo);

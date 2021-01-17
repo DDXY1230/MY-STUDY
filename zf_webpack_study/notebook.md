@@ -52,3 +52,27 @@ chunkhash 代码块的hash,因为每个entry都会产生一个chunk
 
 ## 在html中引入图片
 cnpm i html-withimg-loader -D
+
+## 插件介绍
+cnpm i glob -S
+glob很强大的文件匹配功能
+glob有很多规则,但不是正则,需要查阅文件才行
+
+## 如何使用less和sass
+首先安装: npm i less less-loader -D
+        npm i node-sass sass-loader -D
+
+## 处理浏览器的前缀
+npm i postcss-loader autoprefixer -D
+
+## 转义器 babel
+npm i babel-loader @babel/core @babel/preset-env @babel/preset-react -D
+还有一些插件: npm i @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties -D
+
+## babel runtime 
+为什么要使用babel runtime?
+因为babel在每个文件都插入了辅助代码,使得代码体积过大
+babel对一些公共方法使用了非常小的辅助代码,比如_extend
+默认情况下会被添加到每一个需要的文件,你可以引入@babel/runtime 作为一个独立的模块,来避免重复引入
+npm install --save @babel/runtime
+npm i -D @babel/plugin-transform-runtime
