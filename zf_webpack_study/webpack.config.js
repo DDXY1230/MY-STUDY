@@ -63,6 +63,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        // use: 'babel-loader', // 如果有额外的配置文件这个地方只写这一句就可以了,没有的话,就如下写
         use: {
           loader: 'babel-loader',
           options: {
@@ -88,7 +89,17 @@ module.exports = {
         
         //以下是对css进行压缩,上面的写法是普通写法,没有进行压缩,以下两种写法均可
         // use: [MiniCssExtractPlugin.loader, 'css-loader']
-        use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader','postcss-loader']// 这里光写‘postcss-loader’还不行哦,还要写配置文件postcss.config.js和.browserslistrc配置浏览器支持的版本
+        use: [{loader: MiniCssExtractPlugin.loader}, 
+        'css-loader',
+        'postcss-loader'//如果有配置文件postcss.config.js,就直接这样写,没有的话如下
+        // {
+        //   loader: 'postcss-loader',
+        //   options: {
+        //     plugins: [require('autoprefixer')({browsers: ['ios > 6']})]
+        //   }
+        // }
+
+        ]// 这里光写‘postcss-loader’还不行哦,还要写配置文件postcss.config.js和.browserslistrc配置浏览器支持的版本
       },
       {
         test: /\.(jpg|png|gig|jpeg|svg)$/,
