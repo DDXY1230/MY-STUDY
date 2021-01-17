@@ -5,7 +5,8 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+// const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 module.exports = {
   //因为开发环境和生产环境下的webpack配置有很多不一样的地方,development环境下压缩失效
@@ -68,7 +69,22 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist-1/'),// 配了之后以此作为根目录在浏览器中显示
     port: 8081,// 自定义端口号
     host: 'localhost',
-    compress: true// 压缩
+    compress: true,// 压缩
+    // before(app) {
+    // 这个是用来模拟返回数据的
+    //   // webpack-dev-server内部其实就是一个express服务器
+    //   app.get('/api/users', function(req,res) {
+    //     console.log(req.url)
+    //     res.json([{id:1,name: 'zhufeng'}])
+    //   })
+    // },
+    proxy: {
+    // "/api": "http://localhost:3000"
+      "/api": {// api/users
+        target: "http://localhost:3000",
+        pathRewrite: {'^/api': ''}// 重写请求路径,变成/users
+      }
+    },
   },
   // externals: {
     // 一般jquery是通过cdn引入的,所以生产环境不需要打包了,但是在开发环境需要使用
@@ -170,6 +186,10 @@ module.exports = {
     ]
   },
   plugins: [
+    // new CopyWebpackPlugin([{
+    //   from: path.join(__dirname,'src/assets'),
+    //   to: path.join(__dirname, 'dist-1/assets')
+    // }]),
     // new HtmlWebpackExternalsPlugin({
     //   externals: {
     //     module: 'jquery',// 包名

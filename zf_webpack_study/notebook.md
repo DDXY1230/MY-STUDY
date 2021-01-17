@@ -102,3 +102,7 @@ cnpm i eslint-config-airbnb eslint-loader eslint eslint-plugin-import eslint-plu
 
 ## 外链cdn
 npm i html-webpack-externals-plugin -D
+
+
+## 外部不需要走webpack打包的文件, 比如word pdf ecexl, 设计稿等
+npm i copy-webpack-plugin -D
