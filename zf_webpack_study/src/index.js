@@ -4,7 +4,11 @@ import './index.css'
 import './sass.scss'
 import './less.less'
 import './font.css'
+// import _ from 'lodash'
+// 在代码中加loader的方式,从右边向左边执行
+// let $ = require('babel-loader!expose-loader?$!jquery')
 
+console.log(_.join(['1','b','c'], '@'))
 const logo = require('./images/samoye.jpg')
 
 console.log(logo)

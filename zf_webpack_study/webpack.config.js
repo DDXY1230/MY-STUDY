@@ -5,10 +5,18 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+const webpack = require('webpack')
 module.exports = {
   //因为开发环境和生产环境下的webpack配置有很多不一样的地方,development环境下压缩失效
   mode: 'development',// development,production,node  一共有三个选项,不同模式优化的方案不一样
   // devtool: 'eval',
+  // watch: true,// 开启就会文件随时变化都会打包
+  // watchOptions: {
+  //   ignored: /node_modules/,// 不进行监听的文件,
+  //   aggregateTimeout: 300,// 监听到文件发生变化的时候过300ms在执行
+  //   poll: 1000// 默认每秒询问1000次
+  // },
   devtool: 'cheap-module-source-map',// 一般开发环境用source-map,是编译后的代码,因为比较慢但是便于调试,生产环境用eval性能快好,可以缓存
   //cheap-source-map 没有包含列的信息,体积相对小一些,在开发环境中使用比较实惠,只能定位行不能定位列,这个是会把代码换行,也可能是转化后的代码,不一定是真正的源码
   //cheap-module-source-map 这个可以定位到真正的源码,但是有cheap就无法定位到行信息(其实影响不大了),
@@ -62,15 +70,20 @@ module.exports = {
     host: 'localhost',
     compress: true// 压缩
   },
+  // externals: {
+    // 一般jquery是通过cdn引入的,所以生产环境不需要打包了,但是在开发环境需要使用
+    // 其实内部也是用的html-webpack-externals-plugin插件来实现的
+  //   'jquery': "jQuery" // key是jquery,是一个包的名字,值jQuery,是全局变量
+  // },
   module: {
     rules: [
-      {
-        test: /\.(js)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',// 强制提前执行normal posts
-        include: path.join(__dirname,'src'),// 只检验自己写的src文件里面的代码
-        exclude: /node_modules/  // 不校验node_modules下面的代码
-      },
+      // {
+      //   test: /\.(js)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',// 强制提前执行normal posts
+      //   include: path.join(__dirname,'src'),// 只检验自己写的src文件里面的代码
+      //   exclude: /node_modules/  // 不校验node_modules下面的代码
+      // },
       {
         test: /\.js$/,
         // use: 'babel-loader', // 如果有额外的配置文件这个地方只写这一句就可以了,没有的话,就如下写
@@ -157,6 +170,18 @@ module.exports = {
     ]
   },
   plugins: [
+    // new HtmlWebpackExternalsPlugin({
+    //   externals: {
+    //     module: 'jquery',// 包名
+    //     entry: '',// 这里是cdn的地址
+    //     global: 'jQuery'// 从全局对象中的那个属性中获取的
+    //   }
+    // }),
+    // new webpack.ProvidePlugin({
+      // 此插件会自动向所有的模块注入一个_变量,类似一个全局变量,之后每个文件就不需要引入了,缺点也是有的,就是
+      //每个文件都引入了整个文件,而且有可能同名冲突,相当于在模块中注入了局部变量,全局用不了
+      // _: 'lodash'
+    // }),
     //这个插件是产出html文件,在编译的时候会读取模版文件
     new HtmlWebpackPlugin({
       filename: 'index.html',// 产出后的文件名

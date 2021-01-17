@@ -88,3 +88,17 @@ cnpm i eslint-config-airbnb eslint-loader eslint eslint-plugin-import eslint-plu
 
 ## source - map 的原理
 在编译的打包的时候有个sourceURl,就是打包的时候存下来地址,进行关联,当你调试的时候就可以定位了
+
+
+// 在代码中加loader的方式,从右边向左边执行
+// let $ = require('babel-loader!expose-loader?$!jquery')
+// $是引入jquery模块返回的值传参数
+// 跟在配置文件中如下写一样的
+{
+        test: /\.(jquery)$/,
+        loader: 'expose-loader?$'
+}
+
+
+## 外链cdn
+npm i html-webpack-externals-plugin -D
