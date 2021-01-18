@@ -18,6 +18,16 @@ module.exports = {
   //   aggregateTimeout: 300,// 监听到文件发生变化的时候过300ms在执行
   //   poll: 1000// 默认每秒询问1000次
   // },
+  
+  //定制一些查找文件的规则,先找js再找jsx.....
+  resolve: {
+    alias: {
+      '@': path.join(__dirname,'src')
+    },
+    extensions: ['.js','.jsx','.json','css'],
+    modules: ["node_modules", "zfmath"],//只查找当前目录的node_modules,在node_modules中查找不到就到zfmath里面去找,减少额外的查找路径
+    mainFiles: ["index.js", "main.js"]//找一个文件先找到对应的index再找main,这个顺序是可以调整的
+  },
   devtool: 'cheap-module-source-map',// 一般开发环境用source-map,是编译后的代码,因为比较慢但是便于调试,生产环境用eval性能快好,可以缓存
   //cheap-source-map 没有包含列的信息,体积相对小一些,在开发环境中使用比较实惠,只能定位行不能定位列,这个是会把代码换行,也可能是转化后的代码,不一定是真正的源码
   //cheap-module-source-map 这个可以定位到真正的源码,但是有cheap就无法定位到行信息(其实影响不大了),
@@ -92,6 +102,7 @@ module.exports = {
   //   'jquery': "jQuery" // key是jquery,是一个包的名字,值jQuery,是全局变量
   // },
   module: {
+    noParse: /jquery|lodash/,//不需要解析成语法树的模块,提高打包速度
     rules: [
       // {
       //   test: /\.(js)$/,
