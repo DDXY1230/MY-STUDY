@@ -8,9 +8,12 @@ const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plug
 // const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
-module.exports = {
+module.exports = (env,argv)=>{
+  console.log('ooooo==>>>',env)
+  return (
+   {
   //因为开发环境和生产环境下的webpack配置有很多不一样的地方,development环境下压缩失效
-  mode: 'development',// development,production,node  一共有三个选项,不同模式优化的方案不一样
+  mode: env,// development,production,node  一共有三个选项,不同模式优化的方案不一样
   // devtool: 'eval',
   // watch: true,// 开启就会文件随时变化都会打包
   // watchOptions: {
@@ -25,25 +28,25 @@ module.exports = {
       '@': path.join(__dirname,'src')
     },
     extensions: ['.js','.jsx','.json','css'],
-    modules: ["node_modules", "zfmath"],//只查找当前目录的node_modules,在node_modules中查找不到就到zfmath里面去找,减少额外的查找路径
-    mainFiles: ["index.js", "main.js"]//找一个文件先找到对应的index再找main,这个顺序是可以调整的
+    // modules: ["node_modules", "zfmath"],//只查找当前目录的node_modules,在node_modules中查找不到就到zfmath里面去找,减少额外的查找路径
+    // mainFiles: ["index.js", "main.js"]//找一个文件先找到对应的index再找main,这个顺序是可以调整的
   },
-  devtool: 'cheap-module-source-map',// 一般开发环境用source-map,是编译后的代码,因为比较慢但是便于调试,生产环境用eval性能快好,可以缓存
+  // devtool: 'cheap-module-source-map',// 一般开发环境用source-map,是编译后的代码,因为比较慢但是便于调试,生产环境用eval性能快好,可以缓存
   //cheap-source-map 没有包含列的信息,体积相对小一些,在开发环境中使用比较实惠,只能定位行不能定位列,这个是会把代码换行,也可能是转化后的代码,不一定是真正的源码
   //cheap-module-source-map 这个可以定位到真正的源码,但是有cheap就无法定位到行信息(其实影响不大了),
   //inline-source-map 这个没有生成单独的source-map文件,而是直接其嵌入打包后的文件中
   optimization: {
     //这里放一些优化的插件
-    minimizer: [
+    minimizer: env === 'production'?[
       new TerserWebpackPlugin({// 如果是生产环境,默认会启用
-        parallel: true,// 开启多进程并行压缩
+        parallel: true,//  开启多进程并行压缩
         // cache: true// 开启缓存,如果代码没有发生变化就用缓存
       }),
       new OptimizeCssAssetsWebpackPlugin({
         assetNameRegExp: /\.css$/g, // 指定要压缩模块的正则
         cssProcessor: require('cssnano'),//cssnano是postcss的优化和分解插件,cssnano采用的格式很好的css,
       })
-    ]
+    ] : []
   },
   // entry如果是字符串的值,那就是单入口
   // entry: './src/index.js', // 入口文件,如果是单入口,chunk的名字就是main
@@ -228,4 +231,4 @@ module.exports = {
       chunkFilename: '[id].css'// 在异步加载是用后面再学
     })
   ]
-}
+})}
