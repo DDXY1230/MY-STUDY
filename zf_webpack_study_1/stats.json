@@ -1,0 +1,1355 @@
+ooooo==>>> undefined
+Webpack Bundle Analyzer saved stats file to /Users/mac/Desktop/my-study/zf_webpack_study_1/dist-1/stats.json
+{
+  "hash": "1f318c4d4db811c90743",
+  "version": "5.15.0",
+  "time": 1599,
+  "builtAt": 1611044308319,
+  "publicPath": "/",
+  "outputPath": "/Users/mac/Desktop/my-study/zf_webpack_study_1/dist-1",
+  "assetsByChunkName": {
+    "index": [
+      "index.1f318c4d.9d4c7a836ac166c18619.js"
+    ],
+    "login": [
+      "login.1f318c4d.d6777561a7b726368bf0.js"
+    ],
+    "register": [
+      "register.1f318c4d.b58b869975e42d5cb0ea.js"
+    ]
+  },
+  "assets": [
+    {
+      "type": "asset",
+      "name": "register.html",
+      "size": 293,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "size": 293
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "index.html",
+      "size": 287,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "size": 287
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "login.html",
+      "size": 287,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "size": 287
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "register.1f318c4d.b58b869975e42d5cb0ea.js",
+      "size": 165,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "fullhash": "1f318c4d",
+        "chunkhash": "b58b869975e42d5cb0ea",
+        "javascriptModule": false,
+        "related": {
+          "sourceMap": "register.1f318c4d.b58b869975e42d5cb0ea.js.map"
+        },
+        "size": 165
+      },
+      "chunkNames": [
+        "register"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 0,
+      "related": [
+        {
+          "type": "sourceMap",
+          "name": "register.1f318c4d.b58b869975e42d5cb0ea.js.map",
+          "size": 229,
+          "emitted": true,
+          "comparedForEmit": false,
+          "cached": false,
+          "info": {
+            "development": true,
+            "size": 229
+          },
+          "chunkNames": [],
+          "chunkIdHints": [],
+          "auxiliaryChunkNames": [
+            "register"
+          ],
+          "auxiliaryChunkIdHints": [],
+          "related": {},
+          "chunks": [],
+          "auxiliaryChunks": [
+            685
+          ],
+          "isOverSizeLimit": false
+        }
+      ],
+      "chunks": [
+        685
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "index.1f318c4d.9d4c7a836ac166c18619.js",
+      "size": 159,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "fullhash": "1f318c4d",
+        "chunkhash": "9d4c7a836ac166c18619",
+        "javascriptModule": false,
+        "related": {
+          "sourceMap": "index.1f318c4d.9d4c7a836ac166c18619.js.map"
+        },
+        "size": 159
+      },
+      "chunkNames": [
+        "index"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 0,
+      "related": [
+        {
+          "type": "sourceMap",
+          "name": "index.1f318c4d.9d4c7a836ac166c18619.js.map",
+          "size": 220,
+          "emitted": true,
+          "comparedForEmit": false,
+          "cached": false,
+          "info": {
+            "development": true,
+            "size": 220
+          },
+          "chunkNames": [],
+          "chunkIdHints": [],
+          "auxiliaryChunkNames": [
+            "index"
+          ],
+          "auxiliaryChunkIdHints": [],
+          "related": {},
+          "chunks": [],
+          "auxiliaryChunks": [
+            826
+          ],
+          "isOverSizeLimit": false
+        }
+      ],
+      "chunks": [
+        826
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "login.1f318c4d.d6777561a7b726368bf0.js",
+      "size": 159,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "fullhash": "1f318c4d",
+        "chunkhash": "d6777561a7b726368bf0",
+        "javascriptModule": false,
+        "related": {
+          "sourceMap": "login.1f318c4d.d6777561a7b726368bf0.js.map"
+        },
+        "size": 159
+      },
+      "chunkNames": [
+        "login"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 0,
+      "related": [
+        {
+          "type": "sourceMap",
+          "name": "login.1f318c4d.d6777561a7b726368bf0.js.map",
+          "size": 220,
+          "emitted": true,
+          "comparedForEmit": false,
+          "cached": false,
+          "info": {
+            "development": true,
+            "size": 220
+          },
+          "chunkNames": [],
+          "chunkIdHints": [],
+          "auxiliaryChunkNames": [
+            "login"
+          ],
+          "auxiliaryChunkIdHints": [],
+          "related": {},
+          "chunks": [],
+          "auxiliaryChunks": [
+            535
+          ],
+          "isOverSizeLimit": false
+        }
+      ],
+      "chunks": [
+        535
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    }
+  ],
+  "chunks": [
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "recorded": false,
+      "size": 36,
+      "sizes": {
+        "javascript": 36
+      },
+      "names": [
+        "login"
+      ],
+      "idHints": [],
+      "runtime": [
+        "login"
+      ],
+      "files": [
+        "login.1f318c4d.d6777561a7b726368bf0.js"
+      ],
+      "auxiliaryFiles": [
+        "login.1f318c4d.d6777561a7b726368bf0.js.map"
+      ],
+      "hash": "d6777561a7b726368bf0",
+      "childrenByOrder": {},
+      "id": 535,
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "login",
+          "request": "./src/entries/login.js"
+        }
+      ]
+    },
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "recorded": false,
+      "size": 39,
+      "sizes": {
+        "javascript": 39
+      },
+      "names": [
+        "register"
+      ],
+      "idHints": [],
+      "runtime": [
+        "register"
+      ],
+      "files": [
+        "register.1f318c4d.b58b869975e42d5cb0ea.js"
+      ],
+      "auxiliaryFiles": [
+        "register.1f318c4d.b58b869975e42d5cb0ea.js.map"
+      ],
+      "hash": "b58b869975e42d5cb0ea",
+      "childrenByOrder": {},
+      "id": 685,
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "register",
+          "request": "./src/entries/register.js"
+        }
+      ]
+    },
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "recorded": false,
+      "size": 36,
+      "sizes": {
+        "javascript": 36
+      },
+      "names": [
+        "index"
+      ],
+      "idHints": [],
+      "runtime": [
+        "index"
+      ],
+      "files": [
+        "index.1f318c4d.9d4c7a836ac166c18619.js"
+      ],
+      "auxiliaryFiles": [
+        "index.1f318c4d.9d4c7a836ac166c18619.js.map"
+      ],
+      "hash": "9d4c7a836ac166c18619",
+      "childrenByOrder": {},
+      "id": 826,
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "index",
+          "request": "./src/entries/index.js"
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 36,
+      "sizes": {
+        "javascript": 36
+      },
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "identifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/entries/index.js",
+      "name": "./src/entries/index.js",
+      "nameForCondition": "/Users/mac/Desktop/my-study/zf_webpack_study_1/src/entries/index.js",
+      "index": 0,
+      "preOrderIndex": 0,
+      "index2": 0,
+      "postOrderIndex": 0,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 1037,
+        "resolving": 51,
+        "restoring": 0,
+        "building": 986,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 51,
+        "dependencies": 0
+      },
+      "id": 781,
+      "issuerId": null,
+      "chunks": [
+        826
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "resolvedModuleIdentifier": null,
+          "resolvedModule": null,
+          "type": "entry",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./src/entries/index.js",
+          "loc": "index",
+          "moduleId": null,
+          "resolvedModuleId": null
+        }
+      ],
+      "usedExports": [],
+      "providedExports": null,
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 1:0-30",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 36,
+      "sizes": {
+        "javascript": 36
+      },
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "identifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/entries/login.js",
+      "name": "./src/entries/login.js",
+      "nameForCondition": "/Users/mac/Desktop/my-study/zf_webpack_study_1/src/entries/login.js",
+      "index": 1,
+      "preOrderIndex": 1,
+      "index2": 1,
+      "postOrderIndex": 1,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 1038,
+        "resolving": 52,
+        "restoring": 0,
+        "building": 986,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 52,
+        "dependencies": 0
+      },
+      "id": 772,
+      "issuerId": null,
+      "chunks": [
+        535
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "resolvedModuleIdentifier": null,
+          "resolvedModule": null,
+          "type": "entry",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./src/entries/login.js",
+          "loc": "login",
+          "moduleId": null,
+          "resolvedModuleId": null
+        }
+      ],
+      "usedExports": [],
+      "providedExports": null,
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 1:0-30",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 39,
+      "sizes": {
+        "javascript": 39
+      },
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "identifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/entries/register.js",
+      "name": "./src/entries/register.js",
+      "nameForCondition": "/Users/mac/Desktop/my-study/zf_webpack_study_1/src/entries/register.js",
+      "index": 2,
+      "preOrderIndex": 2,
+      "index2": 2,
+      "postOrderIndex": 2,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 1189,
+        "resolving": 77,
+        "restoring": 0,
+        "building": 1112,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 77,
+        "dependencies": 0
+      },
+      "id": 624,
+      "issuerId": null,
+      "chunks": [
+        685
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "resolvedModuleIdentifier": null,
+          "resolvedModule": null,
+          "type": "entry",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./src/entries/register.js",
+          "loc": "register",
+          "moduleId": null,
+          "resolvedModuleId": null
+        }
+      ],
+      "usedExports": [],
+      "providedExports": null,
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 1:0-33",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0
+    }
+  ],
+  "entrypoints": {
+    "index": {
+      "name": "index",
+      "chunks": [
+        826
+      ],
+      "assets": [
+        {
+          "name": "index.1f318c4d.9d4c7a836ac166c18619.js",
+          "size": 159
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 159,
+      "auxiliaryAssets": [
+        {
+          "name": "index.1f318c4d.9d4c7a836ac166c18619.js.map",
+          "size": 220
+        }
+      ],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 220,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    },
+    "login": {
+      "name": "login",
+      "chunks": [
+        535
+      ],
+      "assets": [
+        {
+          "name": "login.1f318c4d.d6777561a7b726368bf0.js",
+          "size": 159
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 159,
+      "auxiliaryAssets": [
+        {
+          "name": "login.1f318c4d.d6777561a7b726368bf0.js.map",
+          "size": 220
+        }
+      ],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 220,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    },
+    "register": {
+      "name": "register",
+      "chunks": [
+        685
+      ],
+      "assets": [
+        {
+          "name": "register.1f318c4d.b58b869975e42d5cb0ea.js",
+          "size": 165
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 165,
+      "auxiliaryAssets": [
+        {
+          "name": "register.1f318c4d.b58b869975e42d5cb0ea.js.map",
+          "size": 229
+        }
+      ],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 229,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    }
+  },
+  "namedChunkGroups": {
+    "index": {
+      "name": "index",
+      "chunks": [
+        826
+      ],
+      "assets": [
+        {
+          "name": "index.1f318c4d.9d4c7a836ac166c18619.js",
+          "size": 159
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 159,
+      "auxiliaryAssets": [
+        {
+          "name": "index.1f318c4d.9d4c7a836ac166c18619.js.map",
+          "size": 220
+        }
+      ],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 220,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    },
+    "login": {
+      "name": "login",
+      "chunks": [
+        535
+      ],
+      "assets": [
+        {
+          "name": "login.1f318c4d.d6777561a7b726368bf0.js",
+          "size": 159
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 159,
+      "auxiliaryAssets": [
+        {
+          "name": "login.1f318c4d.d6777561a7b726368bf0.js.map",
+          "size": 220
+        }
+      ],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 220,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    },
+    "register": {
+      "name": "register",
+      "chunks": [
+        685
+      ],
+      "assets": [
+        {
+          "name": "register.1f318c4d.b58b869975e42d5cb0ea.js",
+          "size": 165
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 165,
+      "auxiliaryAssets": [
+        {
+          "name": "register.1f318c4d.b58b869975e42d5cb0ea.js.map",
+          "size": 229
+        }
+      ],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 229,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    }
+  },
+  "errors": [],
+  "errorsCount": 0,
+  "warnings": [
+    {
+      "message": "configuration\nThe 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.\nYou can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/",
+      "stack": "NoModeWarning: configuration\nThe 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.\nYou can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/\n    at /Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/WarnNoModeSetPlugin.js:20:30\n    at Hook.eval [as call] (eval at create (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/tapable/lib/HookCodeFactory.js:19:10), <anonymous>:23:1)\n    at Hook.CALL_DELEGATE [as _call] (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/tapable/lib/Hook.js:14:14)\n    at Compiler.newCompilation (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/Compiler.js:990:30)\n    at /Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/Compiler.js:1033:29\n    at Hook.eval [as callAsync] (eval at create (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:6:1)\n    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/tapable/lib/Hook.js:18:14)\n    at Compiler.compile (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/Compiler.js:1028:28)\n    at /Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/Compiler.js:471:12\n    at Compiler.readRecords (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/Compiler.js:869:11)\n    at /Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/Compiler.js:468:11\n    at Hook.eval [as callAsync] (eval at create (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:6:1)\n    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/tapable/lib/Hook.js:18:14)\n    at /Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/Compiler.js:465:20\n    at Hook.eval [as callAsync] (eval at create (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/tapable/lib/Hook.js:18:14)\n    at run (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/Compiler.js:462:25)\n    at Compiler.run (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/lib/Compiler.js:485:4)\n    at processOptions (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack-cli/bin/cli.js:353:14)\n    at /Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack-cli/bin/cli.js:364:3\n    at Object.parse (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/yargs/yargs.js:576:18)\n    at /Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack-cli/bin/cli.js:49:8\n    at Object.<anonymous> (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack-cli/bin/cli.js:366:3)\n    at Module._compile (internal/modules/cjs/loader.js:1251:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1272:10)\n    at Module.load (internal/modules/cjs/loader.js:1100:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:962:14)\n    at Module.require (internal/modules/cjs/loader.js:1140:19)\n    at require (internal/modules/cjs/helpers.js:75:18)\n    at runCli (/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/webpack/bin/webpack.js:54:2)"
+    }
+  ],
+  "warningsCount": 1,
+  "children": [
+    {
+      "name": "HtmlWebpackCompiler",
+      "hash": "b4373daed26325a67bf3",
+      "version": "5.15.0",
+      "time": 1188,
+      "builtAt": 1611044307972,
+      "publicPath": "/",
+      "outputPath": "/Users/mac/Desktop/my-study/zf_webpack_study_1/dist-1",
+      "assetsByChunkName": {
+        "HtmlWebpackPlugin_0": [
+          "__child-HtmlWebpackPlugin_0"
+        ],
+        "HtmlWebpackPlugin_1": [
+          "__child-HtmlWebpackPlugin_1"
+        ],
+        "HtmlWebpackPlugin_2": [
+          "__child-HtmlWebpackPlugin_2"
+        ]
+      },
+      "assets": [
+        {
+          "type": "asset",
+          "name": "__child-HtmlWebpackPlugin_2",
+          "size": 1657,
+          "emitted": false,
+          "comparedForEmit": false,
+          "cached": true,
+          "info": {
+            "javascriptModule": false
+          },
+          "chunkNames": [
+            "HtmlWebpackPlugin_2"
+          ],
+          "chunkIdHints": [],
+          "auxiliaryChunkNames": [],
+          "auxiliaryChunkIdHints": [],
+          "related": {},
+          "chunks": [
+            781
+          ],
+          "auxiliaryChunks": [],
+          "isOverSizeLimit": false
+        },
+        {
+          "type": "asset",
+          "name": "__child-HtmlWebpackPlugin_0",
+          "size": 1648,
+          "emitted": false,
+          "comparedForEmit": false,
+          "cached": true,
+          "info": {
+            "javascriptModule": false
+          },
+          "chunkNames": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "chunkIdHints": [],
+          "auxiliaryChunkNames": [],
+          "auxiliaryChunkIdHints": [],
+          "related": {},
+          "chunks": [
+            443
+          ],
+          "auxiliaryChunks": [],
+          "isOverSizeLimit": false
+        },
+        {
+          "type": "asset",
+          "name": "__child-HtmlWebpackPlugin_1",
+          "size": 1648,
+          "emitted": false,
+          "comparedForEmit": false,
+          "cached": true,
+          "info": {
+            "javascriptModule": false
+          },
+          "chunkNames": [
+            "HtmlWebpackPlugin_1"
+          ],
+          "chunkIdHints": [],
+          "auxiliaryChunkNames": [],
+          "auxiliaryChunkIdHints": [],
+          "related": {},
+          "chunks": [
+            175
+          ],
+          "auxiliaryChunks": [],
+          "isOverSizeLimit": false
+        }
+      ],
+      "chunks": [
+        {
+          "rendered": true,
+          "initial": true,
+          "entry": true,
+          "recorded": false,
+          "size": 241,
+          "sizes": {
+            "javascript": 241
+          },
+          "names": [
+            "HtmlWebpackPlugin_1"
+          ],
+          "idHints": [],
+          "runtime": [
+            "HtmlWebpackPlugin_1"
+          ],
+          "files": [
+            "__child-HtmlWebpackPlugin_1"
+          ],
+          "auxiliaryFiles": [],
+          "hash": "9364421682c7732b3b17",
+          "childrenByOrder": {},
+          "id": 175,
+          "siblings": [],
+          "parents": [],
+          "children": [],
+          "origins": [
+            {
+              "module": "",
+              "moduleIdentifier": "",
+              "moduleName": "",
+              "loc": "HtmlWebpackPlugin_1",
+              "request": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/login.html"
+            }
+          ]
+        },
+        {
+          "rendered": true,
+          "initial": true,
+          "entry": true,
+          "recorded": false,
+          "size": 241,
+          "sizes": {
+            "javascript": 241
+          },
+          "names": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "idHints": [],
+          "runtime": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "files": [
+            "__child-HtmlWebpackPlugin_0"
+          ],
+          "auxiliaryFiles": [],
+          "hash": "33475ab3da348e6e62b7",
+          "childrenByOrder": {},
+          "id": 443,
+          "siblings": [],
+          "parents": [],
+          "children": [],
+          "origins": [
+            {
+              "module": "",
+              "moduleIdentifier": "",
+              "moduleName": "",
+              "loc": "HtmlWebpackPlugin_0",
+              "request": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/index.html"
+            }
+          ]
+        },
+        {
+          "rendered": true,
+          "initial": true,
+          "entry": true,
+          "recorded": false,
+          "size": 250,
+          "sizes": {
+            "javascript": 250
+          },
+          "names": [
+            "HtmlWebpackPlugin_2"
+          ],
+          "idHints": [],
+          "runtime": [
+            "HtmlWebpackPlugin_2"
+          ],
+          "files": [
+            "__child-HtmlWebpackPlugin_2"
+          ],
+          "auxiliaryFiles": [],
+          "hash": "e8666466f501ed6fdccc",
+          "childrenByOrder": {},
+          "id": 781,
+          "siblings": [],
+          "parents": [],
+          "children": [],
+          "origins": [
+            {
+              "module": "",
+              "moduleIdentifier": "",
+              "moduleName": "",
+              "loc": "HtmlWebpackPlugin_2",
+              "request": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/register.html"
+            }
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 241,
+          "sizes": {
+            "javascript": 241
+          },
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "identifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-withimg-loader/index.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/index.html",
+          "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/index.html",
+          "nameForCondition": "/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/index.html",
+          "index": 0,
+          "preOrderIndex": 0,
+          "index2": 0,
+          "postOrderIndex": 0,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 0,
+            "resolving": 0,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 0,
+            "dependencies": 0
+          },
+          "id": 934,
+          "issuerId": null,
+          "chunks": [
+            443
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-withimg-loader/index.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/index.html",
+              "module": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/index.html",
+              "moduleName": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/index.html",
+              "resolvedModuleIdentifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-withimg-loader/index.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/index.html",
+              "resolvedModule": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/index.html",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "1:0-14",
+              "moduleId": 934,
+              "resolvedModuleId": 934
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/index.html",
+              "loc": "HtmlWebpackPlugin_0",
+              "moduleId": null,
+              "resolvedModuleId": null
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": null,
+              "active": true,
+              "explanation": "used as library export",
+              "userRequest": null,
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: module.exports is used directly at 1:0-14",
+            "Statement (ExpressionStatement) with side effects in source code at 1:0-231",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 241,
+          "sizes": {
+            "javascript": 241
+          },
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "identifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-withimg-loader/index.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/login.html",
+          "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/login.html",
+          "nameForCondition": "/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/login.html",
+          "index": 1,
+          "preOrderIndex": 1,
+          "index2": 1,
+          "postOrderIndex": 1,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 0,
+            "resolving": 0,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 0,
+            "dependencies": 0
+          },
+          "id": 834,
+          "issuerId": null,
+          "chunks": [
+            175
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-withimg-loader/index.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/login.html",
+              "module": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/login.html",
+              "moduleName": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/login.html",
+              "resolvedModuleIdentifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-withimg-loader/index.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/login.html",
+              "resolvedModule": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/login.html",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "1:0-14",
+              "moduleId": 834,
+              "resolvedModuleId": 834
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/login.html",
+              "loc": "HtmlWebpackPlugin_1",
+              "moduleId": null,
+              "resolvedModuleId": null
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": null,
+              "active": true,
+              "explanation": "used as library export",
+              "userRequest": null,
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: module.exports is used directly at 1:0-14",
+            "Statement (ExpressionStatement) with side effects in source code at 1:0-231",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 250,
+          "sizes": {
+            "javascript": 250
+          },
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "identifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-withimg-loader/index.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/register.html",
+          "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/register.html",
+          "nameForCondition": "/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/register.html",
+          "index": 2,
+          "preOrderIndex": 2,
+          "index2": 2,
+          "postOrderIndex": 2,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 0,
+            "resolving": 0,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 0,
+            "dependencies": 0
+          },
+          "id": 140,
+          "issuerId": null,
+          "chunks": [
+            781
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-withimg-loader/index.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/register.html",
+              "module": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/register.html",
+              "moduleName": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/register.html",
+              "resolvedModuleIdentifier": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-withimg-loader/index.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/register.html",
+              "resolvedModule": "./node_modules/html-webpack-plugin/lib/loader.js!./src/pages/register.html",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "1:0-14",
+              "moduleId": 140,
+              "resolvedModuleId": 140
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "/Users/mac/Desktop/my-study/zf_webpack_study_1/node_modules/html-webpack-plugin/lib/loader.js!/Users/mac/Desktop/my-study/zf_webpack_study_1/src/pages/register.html",
+              "loc": "HtmlWebpackPlugin_2",
+              "moduleId": null,
+              "resolvedModuleId": null
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": null,
+              "active": true,
+              "explanation": "used as library export",
+              "userRequest": null,
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: module.exports is used directly at 1:0-14",
+            "Statement (ExpressionStatement) with side effects in source code at 1:0-240",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        }
+      ],
+      "entrypoints": {
+        "HtmlWebpackPlugin_0": {
+          "name": "HtmlWebpackPlugin_0",
+          "chunks": [
+            443
+          ],
+          "assets": [
+            {
+              "name": "__child-HtmlWebpackPlugin_0"
+            }
+          ],
+          "filteredAssets": 0,
+          "assetsSize": null,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        },
+        "HtmlWebpackPlugin_1": {
+          "name": "HtmlWebpackPlugin_1",
+          "chunks": [
+            175
+          ],
+          "assets": [
+            {
+              "name": "__child-HtmlWebpackPlugin_1"
+            }
+          ],
+          "filteredAssets": 0,
+          "assetsSize": null,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        },
+        "HtmlWebpackPlugin_2": {
+          "name": "HtmlWebpackPlugin_2",
+          "chunks": [
+            781
+          ],
+          "assets": [
+            {
+              "name": "__child-HtmlWebpackPlugin_2"
+            }
+          ],
+          "filteredAssets": 0,
+          "assetsSize": null,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        }
+      },
+      "namedChunkGroups": {
+        "HtmlWebpackPlugin_0": {
+          "name": "HtmlWebpackPlugin_0",
+          "chunks": [
+            443
+          ],
+          "assets": [
+            {
+              "name": "__child-HtmlWebpackPlugin_0"
+            }
+          ],
+          "filteredAssets": 0,
+          "assetsSize": null,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        },
+        "HtmlWebpackPlugin_1": {
+          "name": "HtmlWebpackPlugin_1",
+          "chunks": [
+            175
+          ],
+          "assets": [
+            {
+              "name": "__child-HtmlWebpackPlugin_1"
+            }
+          ],
+          "filteredAssets": 0,
+          "assetsSize": null,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        },
+        "HtmlWebpackPlugin_2": {
+          "name": "HtmlWebpackPlugin_2",
+          "chunks": [
+            781
+          ],
+          "assets": [
+            {
+              "name": "__child-HtmlWebpackPlugin_2"
+            }
+          ],
+          "filteredAssets": 0,
+          "assetsSize": null,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        }
+      },
+      "errors": [],
+      "errorsCount": 0,
+      "warnings": [],
+      "warningsCount": 0,
+      "children": []
+    }
+  ]
+}

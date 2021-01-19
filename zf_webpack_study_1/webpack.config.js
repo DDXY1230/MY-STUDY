@@ -8,6 +8,10 @@ const TerserWebpackPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 // const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
+const smp = new SpeedMeasureWebpackPlugin()
 const webpack = require('webpack')
 const glob = require('glob')
 const entryFiles = glob.sync('./src/entries/*.js')
@@ -76,7 +80,7 @@ module.exports = (env, argv) => {
     //   // vendor: /node_modules/ //把node_modules里面的东西都添加到vendor里面去
     //   // vendor: glob.sync('./node_modules/**/*.js')
     // },
-
+    // stats: 'errors-only',// 控制台有错误就输出,没错误就不输出
     output: {
       path: path.join(__dirname, 'dist-1'), // 放在当前目录下的dist文件夹内,输出的目录只能是绝对目录
 
@@ -248,6 +252,12 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'disabled',
+    generateStatsFile: true,
+    statsOptions: { source: false }
+      }),// 默认不传参数的话打包的时候会自己打开一个服务,查看信息
+      // new FriendlyErrorsWebpackPlugin(),
       // 忽略部分文件,moment目录下的local文件夹
       // new webpack.IgnorePlugin({
       //   resourceRegExp: /^\.\/locale$/,

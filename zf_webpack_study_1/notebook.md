@@ -115,3 +115,15 @@ moment这个模块非常非常的大,有各种语言包,有些模块是不需要
 
 ## 对图片进行压缩和优化
 npm install image-webpack-loader -S
+ 
+
+## 友好的显示错误信息
+npm i friendly-errors-webpack-plugin -D
+
+
+## 编译速度测量,看那个环节耗时较长
+npm speed-measure-webpack-plugin -D
+
+## 分析打包的文件
+npm i webpack-bundle-analyzer -D
+
