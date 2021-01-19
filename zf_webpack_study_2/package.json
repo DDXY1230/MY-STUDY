@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "build:dev": "webpack --env=development",
-    "build:prod": "webpack --env=production",
+    "build:dev": "webpack --config webpack.dev.js --env=development",
+    "build:prod": "webpack --config webpack.prod.js --env=production",
     "dev": "webpack-dev-server --open",
-    "dev:dev": "webpack-dev-server --env=development --open",
-    "dev:prod": "webpack-dev-server --env=production --open"
+    "dev:dev": "webpack-dev-server  --config webpack.dev.js --env=development --open",
+    "dev:prod": "webpack-dev-server  --config webpack.dev.js --env=production --open"
   },
   "keywords": [],
   "author": "",

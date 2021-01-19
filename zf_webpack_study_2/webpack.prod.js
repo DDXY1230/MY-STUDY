@@ -1,8 +1,8 @@
 const path = require("path");
 const base = require("./webpack.base.js");
-const { samrt } = require("webpack-merge");
+const { smart } = require("webpack-merge");
 const { webpack } = require("webpack");
-module.exports = samrt(base, {
+module.exports = smart(base, {
   mode: "production",
   devtool: "eval",
   optimization: {

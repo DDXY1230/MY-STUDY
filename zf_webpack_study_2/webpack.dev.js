@@ -1,7 +1,7 @@
 const path = require("path");
 const base = require("./webpack.base.js");
-const { samrt } = require("webpack-merge");
-module.exports = samrt(base, {
+const { smart } = require("webpack-merge");
+module.exports = smart(base, {
   mode: "development",
   devtool: "cheap-source-map",
   watch: true, // 开启就会文件随时变化都会打包
@@ -17,7 +17,7 @@ module.exports = samrt(base, {
     contentBase: path.join(__dirname, 'dist-1/'),// 配了之后以此作为根目录在浏览器中显示
     port: 8081,// 自定义端口号
     host: 'localhost',
-    compress: true,// 压缩
+    compress: true,// 压缩,相当于启动gzip压缩
     // before(app) {
     // 这个是用来模拟返回数据的
     //   // webpack-dev-server内部其实就是一个express服务器

@@ -5,6 +5,7 @@ import './sass.scss'
 import './less.less'
 import './font.css'
 import './log.js'
+import 'moment'
 // import _ from 'lodash'
 // 在代码中加loader的方式,从右边向左边执行
 // let $ = require('babel-loader!expose-loader?$!jquery')

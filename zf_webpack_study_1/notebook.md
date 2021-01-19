@@ -108,4 +108,10 @@ npm i html-webpack-externals-plugin -D
 npm i copy-webpack-plugin -D
 
 
-## 
+## 忽略模块
+npm i moment -S
+moment这个模块非常非常的大,有各种语言包,有些模块是不需要的我们要进行忽略
+
+
+## 对图片进行压缩和优化
+npm install image-webpack-loader -S
