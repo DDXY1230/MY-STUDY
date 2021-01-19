@@ -127,3 +127,6 @@ npm speed-measure-webpack-plugin -D
 ## 分析打包的文件
 npm i webpack-bundle-analyzer -D
 
+## ie 最新版都不支持Promise,所以一般情况还要引入babel-polyfill来解决此问题
+npm i babel-polyfill -S
+

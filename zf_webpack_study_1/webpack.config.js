@@ -155,7 +155,7 @@ module.exports = (env, argv) => {
                   loose: true
                 }],
                 ["@babel/plugin-transform-runtime", {
-                  corejs: false,
+                  corejs: 3,// 把这设置以下就可以不用引入polyfill了,也可以兼容ie
                   helpers: true,
                   // useESModules: false
                 }]
