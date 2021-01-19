@@ -1,8 +1,0 @@
-@font-face {
-  src: url('./fonts/ttf.TTF') format('truetype');
-  font-family: 'tt';
-}
-.welcome {
-  font-size: 100px;
-  font-family: 'tt';
-}

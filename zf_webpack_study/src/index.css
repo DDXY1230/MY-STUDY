@@ -1,9 +1,0 @@
-#root{
-  height: 300px;
-  width: 300px;
-  /* background-color: red; */
-  background-image:url(./images/hehua.jpeg);
-}
-::placeholder {
-  color: green;
-}
