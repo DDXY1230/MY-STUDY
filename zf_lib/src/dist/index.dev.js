@@ -13,7 +13,7 @@ function minus(a, b) {
   return a - b;
 }
 
-function multipty(a, b) {
+function multiply(a, b) {
   return a * b;
 }
 
@@ -24,7 +24,7 @@ function divide(a, b) {
 var _default = {
   add: add,
   minus: minus,
-  multipty: multipty,
+  multiply: multiply,
   divide: divide
 };
 exports["default"] = _default;

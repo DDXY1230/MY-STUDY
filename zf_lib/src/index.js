@@ -4,12 +4,12 @@ function add (a,b) {
 function minus (a,b) {
   return a - b
 }
-function multipty (a,b) {
+function multiply (a,b) {
   return a * b
 }
 function divide (a,b) {
   return a / b
 }
 export default {
-  add,minus,multipty,divide
+  add,minus,multiply,divide
 }
