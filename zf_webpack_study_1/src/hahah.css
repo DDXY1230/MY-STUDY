@@ -4,3 +4,8 @@ div{
 .title {
   color: red;
 }
+.unused {
+  background-color: aliceblue;
+  box-shadow: inset;
+  border: 3px solid yellow;
+}

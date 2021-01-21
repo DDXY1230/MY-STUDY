@@ -2,5 +2,5 @@
 // require('babel-polyfill')
 // let promise = new Promise(resolve => resolve())
 // 一般情况不这么使用,而是使用polyfill的cdn地址,他可以只能的判断当前使用的什么浏览器,从而判断是否需要pollfill
-
+import '../hahah.css'
 document.write('这里是index.js')

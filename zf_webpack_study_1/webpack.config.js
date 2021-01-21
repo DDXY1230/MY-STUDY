@@ -11,6 +11,7 @@ const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plug
 // const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
+const PurgeCssWebpackPlugin = require('purgecss-webpack-plugin')
 const smp = new SpeedMeasureWebpackPlugin()
 const webpack = require('webpack')
 const glob = require('glob')
@@ -69,10 +70,10 @@ module.exports = (env, argv) => {
       ] : []
     },
     // entry如果是字符串的值,那就是单入口
-    // entry: './src/index.js', // 入口文件,如果是单入口,chunk的名字就是main
+    entry: './src/index.js', // 入口文件,如果是单入口,chunk的名字就是main
 
     //多入口要用对象的形式
-    entry,
+    // entry,
     // entry: {
     //   index: './src/index.js',
     //   login: './src/login.js',
@@ -157,7 +158,7 @@ module.exports = (env, argv) => {
                 ["@babel/plugin-transform-runtime", {
                   corejs: 3,// 把这设置以下就可以不用引入polyfill了,也可以兼容ie
                   helpers: true,
-                  // useESModules: false
+                  useESModules: false
                 }]
               ]
             }
@@ -267,7 +268,7 @@ module.exports = (env, argv) => {
       //   from: path.join(__dirname,'src/assets'),
       //   to: path.join(__dirname, 'dist-1/assets')
       // }]),
-      ...htmlWebpackPlugins,
+      // ...htmlWebpackPlugins,
       // new HtmlWebpackExternalsPlugin({
       //   externals: {
       //     module: 'jquery',// 包名
@@ -281,14 +282,14 @@ module.exports = (env, argv) => {
       // _: 'lodash'
       // }),
       //这个插件是产出html文件,在编译的时候会读取模版文件
-      // new HtmlWebpackPlugin({
-      //   filename: 'index.html', // 产出后的文件名
-      //   template: './src/index.html', // 指定模版文件
-      //   hash: true, // 为了避免缓存,
-      //   chunks: ['index'], //默认不写的话,所有产生的chunk都会被插入,引入在先的先加载,后的后加载
-      //   chunksSortMode: 'manual', // 对引入的代码块进行排序的模式,不设置可能顺序会错乱  
-      //   //none  auto manual dependency Function等其实是按照entry的顺序不设置的话
-      // }),
+      new HtmlWebpackPlugin({
+        filename: 'index.html', // 产出后的文件名
+        template: './src/index.html', // 指定模版文件
+        hash: true, // 为了避免缓存,
+        chunks: ['main'], //默认不写的话,所有产生的chunk都会被插入,引入在先的先加载,后的后加载
+        chunksSortMode: 'manual', // 对引入的代码块进行排序的模式,不设置可能顺序会错乱  
+        //none  auto manual dependency Function等其实是按照entry的顺序不设置的话
+      }),
       // new HtmlWebpackPlugin({
       //   filename: 'login.html', // 产出后的文件名
       //   template: './src/index.html', // 指定模版文件
@@ -301,7 +302,11 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash].css', // 代码快chunk的名字,加了contenthash,只要内容不变,就用缓存的
         chunkFilename: '[id].css' // 在异步加载是用后面再学
-      })
+      }),
+      // 扫描文件里面的未使用的类名
+      // new PurgeCssWebpackPlugin({
+      //   paths: glob.sync(`${path.join(__dirname, 'src')}/**/*.css`, {nodir: true})
+      // })
     ]
   })
 }

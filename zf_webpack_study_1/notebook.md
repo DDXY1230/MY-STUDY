@@ -130,3 +130,7 @@ npm i webpack-bundle-analyzer -D
 ## ie 最新版都不支持Promise,所以一般情况还要引入babel-polyfill来解决此问题
 npm i babel-polyfill -S
 
+## 移除没有用到的代码,清理没有用到的类名 以下这个插件必须和mini-css-extract-plugin 一起使用
+npm i -D purgecss-webpack-plugin glob
+
+

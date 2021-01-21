@@ -1,5 +1,7 @@
 "use strict";
 
+require("../hahah.css");
+
 // ie 最新版都不支持Promise,所以一般情况还要引入babel-polyfill来解决此问题
 // require('babel-polyfill')
 // let promise = new Promise(resolve => resolve())
