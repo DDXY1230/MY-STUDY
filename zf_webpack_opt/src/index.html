@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- ${require('raw-loader!./meta.html').default} -->
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+   /* ${require('!!raw-loader!./inline.css').default} */
+   /* 上面两个!的意思是忽略其他loader */
+ </style>
+  <script>
+    let docEle = document.documentElement;
+    // 750px 的是设计稿 / 75 代表一个rem的单位 750的设计稿有10个75
+    function setRemUnit() {
+      // docEle.style.fontSize = docEle.clientWidth / 10 + 'px'
+      // 或者是
+      docEle.style.fontSize = '10vw'
+    }
+    setRemUnit()
+    window.addEventListener('resize', setRemUnit)
+  </script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="root">这里是root容器</div>
+  <div class="welcome">哈哈哈</div>
+</body>
+</html>

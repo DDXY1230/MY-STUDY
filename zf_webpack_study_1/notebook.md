@@ -133,4 +133,17 @@ npm i babel-polyfill -S
 ## 移除没有用到的代码,清理没有用到的类名 以下这个插件必须和mini-css-extract-plugin 一起使用
 npm i -D purgecss-webpack-plugin glob
 
+## 开启摇树功能,注意事项
+mode: 'production'
+
+["@babel/preset-env", {modules: false}], // 转义es6,保留模块化的语法便于摇树
+
+devtool: 'none'
+
+面试题:开发一个组件想要良好的支持摇树优化需要注意什么?
+一定注意尽量使用es6modules
+尽量编写没有副作用的代码
+
+
+
 
