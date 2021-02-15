@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">点击</button>
+  <script>
+    // 截流(节流)是一段时间内核心代码只执行一次
+
+    let btn = document.getElementById('btn')
+
+    // function throttle(func, wait) {
+    //   let previous = 0 // 上一次的默认值
+    //   return function () {
+    //     let now = Date.now()
+    //     if (now - previous > wait) {
+    //       func.apply(this, arguments);
+    //       previous = now
+    //     }
+    //   }
+    // }
+    function throttle(func, wait, options) {
+      let args, context, previous = 0,
+        timer;
+      let later = function () {
+        previous = options.leading === false ? 0 : Date.now()
+        func.apply(context, args)
+      }
+      let throttled = function () {
+        if (timer) {
+          clearTimeout(timer)
+          timer = null
+        }
+        args = arguments;
+        context = this
+        let now = Date.now() // 现在的时间
+        if (!previous && options.leading === false) previous = now
+        if (wait < now - previous) { // 第一次调用
+          func.apply(context, args)
+          previous = now
+        } else if (!timer && options.trailing !== false) {
+          timer = setTimeout(later, wait - (now - previous))
+        }
+      }
+      return throttled
+    }
+
+    function logger() {
+      console.log('logger')
+    }
+    btn.addEventListener('click', throttle(logger, 1000, {
+      trailing: true
+    }))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 防抖是指一段时间结束后,才能触发一次事件,如果一段时间未结束再次触发事件,就会重新开始计算时间
+  </script>
+</body>
+
+</html>

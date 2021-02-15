@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">点击</button>
+  <script>
+    // 防抖是指一段时间结束后,才能触发一次事件,如果一段时间未结束再次触发事件,就会重新开始计算时间
+    let btn = document.getElementById('btn')
+
+    btn.addEventListener('click', debounce(logger, 1000, true))
+
+    function debounce(func, wait, immediate) {
+      let timeout
+      return function () {
+        clearTimeout(timeout)
+        if (immediate) {
+          let callNow = !timeout
+          if (callNow) {
+            func.apply(this,arguments)
+          }
+        }
+        func.apply(this, arguments)
+        timeout = setTimeout(() => {
+          func.apply(this,arguments)
+          timeout = null
+        }, wait)
+      }
+    }
+
+    function logger() {
+      console.log('logger')
+    }
+  </script>
+</body>
+
+</html>
